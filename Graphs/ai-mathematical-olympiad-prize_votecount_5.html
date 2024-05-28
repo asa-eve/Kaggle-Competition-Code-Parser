@@ -1,0 +1,168 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 1920px;
+                 height: 1080px;
+                 background-color: #222222;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"font": {"color": "white"}, "group": 2, "id": "torch", "label": "torch", "shape": "dot", "size": 3}, {"font": {"color": "white"}, "group": 2, "id": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "label": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "shape": "dot", "size": 10, "title": "Unique aspects:\n1. The use of Mixtral8x7b, a large-scale language model for prompt prediction and generation.\n2. The integration of BitsAndBytesConfig for quantization-aware training to reduce memory usage.\n\nSteps taken:\n1. Import necessary libraries, including torch, transformers, pandas, and tqdm.\n2. Load the pre-trained Mixtral8x7b model and tokenizer.\n3. Define a custom pipeline for text generation using the transformers library.\n4. Process the output of the pipeline to extract code blocks and execute them to obtain results.\n5. Integrate natural language reasoning with programs to solve mathematical problems.\n\nSummary:\nThis code uses Mixtral8x7b, a large-scale language model, to predict and generate prompts for mathematical problems. It also employs BitsAndBytesConfig for quantization-aware training to reduce memory usage, enabling the model to handle larger datasets. The code then uses the generated prompts to solve mathematical problems and generates answers based on the decoded output."}, {"font": {"color": "white"}, "group": 2, "id": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "label": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "shape": "dot", "size": 13, "title": "Here\u0027s a summary of the unique aspects of this Machine Learning code written in Python:\n\n1. **Pretrained Model**: The code uses a pretrained `AutoModelForCausalLM` from the `transformers` library, which is a causal language model that can generate text based on input prompts.\n\n2. **Custom Pipeline**: A custom pipeline is created using the `pipeline` function from `transformers`, which allows for fine-grained control over the generation process.\n\n3. **CUDA and Torch**: The code utilizes CUDA acceleration and the PyTorch framework to perform computations, including tensor operations and memory management.\n\n4. **Memory-Efficient SDP**: The code enables memory-efficient sparse direct addressing (SDP) on CUDA devices using `torch.backends.cuda.enable_mem_efficient_sdp`.\n\n5. **Natural Language Reasoning**: The code integrates natural language reasoning with programming to solve mathematical problems, which is a unique aspect of this project.\n\n6. **Error Handling and Processing**: The code includes robust error handling mechanisms to handle unexpected errors during processing, including exceptions and try-except blocks.\n\n7. **Repetition and Diversity**: The code incorporates repetition and diversity in its generation process by using a loop with multiple iterations (n_repetitions) and a temperature parameter to control the randomness of generated text.\n\n8. **Answer Processing and Submission**: The code processes the generated answers, including parsing and evaluation, and submits the final results in a submission CSV file.\n\n9. **Visualization and Printing**: The code includes various print statements throughout its execution, providing visualization of intermediate results and debugging information.\n\n10. **File I/O and Data Manipulation**: The code performs file input/output operations using Pandas to read and write CSV files, as well as data manipulation using NumPy and Pandas for array and dataframe operations.\n\nThis code demonstrates advanced Machine Learning concepts, including natural language processing, text generation, and error handling, making it a unique and complex piece of code."}, {"font": {"color": "white"}, "group": 2, "id": "\u2714\ufe0f ID_2 --- AIMO Mixtral Baseline \u2714\ufe0f", "label": "\u2714\ufe0f ID_2 --- AIMO Mixtral Baseline \u2714\ufe0f", "shape": "dot", "size": 5, "title": "**Unique Aspects of Machine Learning Code Written in Python**\n\nThis code appears to be a machine learning model for generating solutions to problems, specifically designed for the AIMO (Artificial Intelligence and Mathematics Online) platform.\n\nHere are some unique aspects of this code:\n\n1. **Complex Fragment Generation**: The code uses a combination of simple and complex instruction fragments to generate solutions. This approach allows for more nuanced and context-dependent responses.\n2. **Temperature Control**: The model incorporates temperature control, which helps regulate the generation process. Lower temperatures lead to more conservative responses, while higher temperatures enable more creative and innovative solutions.\n3. **Repetition Mechanism**: The code includes a repetition mechanism that allows the model to refine its answers based on user feedback or additional context.\n4. **Dataframe-based Inference**: The `infer_on_dataframe` method takes a pandas DataFrame as input and performs inference on the data, returning the predicted answers as a new DataFrame.\n5. **Cross-Validation**: The code includes a cross-validation mechanism that allows for testing and evaluation of the model\u0027s performance on a subset of the data (e.g., 50 examples).\n\n**Key Functions and Methods**\n\n1. `infer`: Takes a problem statement as input and generates a predicted solution using the trained model.\n2. `infer_on_dataframe`: Performs inference on a DataFrame containing problems and saves the results to a CSV file.\n3. `run_ pipeline`/`run_vllm_pipeline`: Executes the machine learning pipeline for generating solutions, either using the VLLM (Very Large Language Model) or a traditional pipeline.\n\n**Technical Details**\n\n1. **Tokenizer**: The code utilizes a tokenizer to preprocess problem statements and generate prompts for the model.\n2. **Model Path**: The `model_path` variable stores the path to the trained machine learning model.\n3. **Temperature Control**: The `temperature` variable controls the level of creativity and innovation in the generated solutions.\n\n**Other Notes**\n\n1. The code includes a demo DataFrame (`demo_df`) for testing purposes.\n2. There is an `IS_ DEBUG` flag that controls whether the cross-validation mechanism is executed or not.\n3. The code uses the `tqdm` library to provide progress bars for iterative operations."}, {"font": {"color": "white"}, "group": 2, "id": "transformers", "label": "transformers", "shape": "dot", "size": 4}, {"font": {"color": "white"}, "group": 2, "id": "pandas", "label": "pandas", "shape": "dot", "size": 5}, {"font": {"color": "white"}, "group": 2, "id": "tqdm", "label": "tqdm", "shape": "dot", "size": 3}, {"font": {"color": "white"}, "group": 2, "id": "gc", "label": "gc", "shape": "dot", "size": 4}, {"font": {"color": "white"}, "group": 1, "id": "re", "label": "re", "shape": "dot", "size": 4}, {"font": {"color": "white"}, "group": 2, "id": "sys", "label": "sys", "shape": "dot", "size": 3}, {"font": {"color": "white"}, "group": 2, "id": "subprocess", "label": "subprocess", "shape": "dot", "size": 3}, {"font": {"color": "white"}, "group": 2, "id": "collections", "label": "collections", "shape": "dot", "size": 3}, {"font": {"color": "white"}, "group": 1, "id": "numpy", "label": "numpy", "shape": "dot", "size": 4}, {"font": {"color": "white"}, "group": 0, "id": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "label": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "shape": "dot", "size": 39, "title": "Let\u0027s summarize the unique aspects of this Machine Learning code written in Python:\n\n**Low Rank Adaptation (LoRA)**: LoRA is a method used to fine-tune large language models (LLMs) in an efficient way. It involves freezing the weights of the LLM and injecting trainable rank-decomposition matrices.\n\nIn the provided code, LoRA is enabled for the Gemma model with a rank of 4. This reduces the number of trainable parameters from ~2.5 billion to ~1.3 million, making it more memory-efficient.\n\n**Key Takeaways**:\n\n* LoRA helps reduce the memory usage of the model while fine-tuning.\n* The code uses Keras and Gemma models for language processing tasks.\n* Fine-tuning is performed using LoRA with a rank of 4.\n* The code includes utilities for extracting answers from model responses and preparing submission files.\n\n**Future Improvements**:\n\n* Train on the full data instead of first 1000 samples.\n* Try using non-instruction-tuned version of Gemma.\n* Increase the sequence length.\n* Experiment with advanced prompt engineering techniques.\n* Implement augmentation to increase the number of samples.\n* Utilize a learning rate scheduler.\n\nThis code provides a good starting point for exploring LoRA and fine-tuning Gemma models for language processing tasks."}, {"font": {"color": "white"}, "group": 1, "id": "\u2714\ufe0f ID_3 --- AIMO: KerasNLP Starter \u2714\ufe0f", "label": "\u2714\ufe0f ID_3 --- AIMO: KerasNLP Starter \u2714\ufe0f", "shape": "dot", "size": 6, "title": "Here\u0027s a summary of the unique aspects of this Machine Learning code written in Python:\n\n1. **Text Generation**: The code uses a tokenizer and a generation model to generate text based on input prompts. It also includes conditional statements to stop generation when certain conditions are met (e.g., reaching a specific length or encountering a specific sequence of characters).\n\n2. **Evaluation Metrics**: The code tracks several evaluation metrics, including the number of correct answers for both text and code outputs. It also calculates the most common output values and prints them.\n\n3. **Best Answer Selection**: The code selects the best answer based on the frequency of occurrences and updates a best answer variable accordingly.\n\n4. **Data Processing**: The code processes data from a Pandas dataframe, including filtering, grouping, and calculating statistics.\n\n5. **File Input/Output**: The code reads and writes files to/from disk, including CSV files and a Python script file.\n\n6. **Subprocess Execution**: The code uses the `subprocess` module to execute a Python script file with a timeout of 7 seconds.\n\n7. **Error Handling**: The code includes try-except blocks to handle errors and exceptions that may occur during execution.\n\n8. **Variable Management**: The code manages several variables, including dictionaries, counters, and arrays, to store and retrieve data.\n\n9. **Conditional Statements**: The code uses conditional statements (if-else) to control the flow of execution based on certain conditions or thresholds.\n\n10. **Looping**: The code includes loops (for-loops and while-loops) to iterate over data, perform calculations, and execute tasks multiple times.\n\nOverall, this code demonstrates a range of Machine Learning and programming concepts, including text generation, evaluation metrics, data processing, file input/output, subprocess execution, error handling, variable management, conditional statements, and looping."}, {"font": {"color": "white"}, "group": 2, "id": "time", "label": "time", "shape": "dot", "size": 2}, {"font": {"color": "white"}, "group": 2, "id": "math", "label": "math", "shape": "dot", "size": 2}, {"font": {"color": "white"}, "group": 2, "id": "random", "label": "random", "shape": "dot", "size": 2}, {"font": {"color": "white"}, "group": 1, "id": "os", "label": "os", "shape": "dot", "size": 2}, {"font": {"color": "white"}, "group": 1, "id": "keras", "label": "keras", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 1, "id": "keras_nlp", "label": "keras_nlp", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "plotly", "label": "plotly", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "IPython", "label": "IPython", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "vllm", "label": "vllm", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "aimo", "label": "aimo", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "sympy", "label": "sympy", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "typing", "label": "typing", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "kaggle_datasets", "label": "kaggle_datasets", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "dataclasses", "label": "dataclasses", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "datetime", "label": "datetime", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "zipfile", "label": "zipfile", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "glob", "label": "glob", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "warnings", "label": "warnings", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "requests", "label": "requests", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "textwrap", "label": "textwrap", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "hashlib", "label": "hashlib", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "imageio", "label": "imageio", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "urllib", "label": "urllib", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "pickle", "label": "pickle", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "shutil", "label": "shutil", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "string", "label": "string", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "json", "label": "json", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "copy", "label": "copy", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "gzip", "label": "gzip", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "ast", "label": "ast", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "io", "label": "io", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "seaborn", "label": "seaborn", "shape": "dot", "size": 1}, {"font": {"color": "white"}, "group": 0, "id": "PIL", "label": "PIL", "shape": "dot", "size": 1}]);
+                  edges = new vis.DataSet([{"from": "torch", "to": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "torch", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "torch", "to": "\u2714\ufe0f ID_2 --- AIMO Mixtral Baseline \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "to": "transformers", "value": 4.0, "width": 1}, {"from": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "to": "pandas", "value": 5.0, "width": 1}, {"from": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "to": "tqdm", "value": 5.0, "width": 1}, {"from": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "to": "gc", "value": 4.0, "width": 1}, {"from": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "to": "re", "value": 4.0, "width": 1}, {"from": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "to": "sys", "value": 3.0, "width": 1}, {"from": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "to": "subprocess", "value": 3.0, "width": 1}, {"from": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "to": "collections", "value": 3.0, "width": 1}, {"from": "\u2714\ufe0f ID_0 --- AIMO Zero-Shot SC MMOS-DeepSeekMath \u2714\ufe0f", "to": "numpy", "value": 5.0, "width": 1}, {"from": "transformers", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "transformers", "to": "\u2714\ufe0f ID_2 --- AIMO Mixtral Baseline \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "transformers", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "pandas", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 5.0, "width": 1}, {"from": "pandas", "to": "\u2714\ufe0f ID_2 --- AIMO Mixtral Baseline \u2714\ufe0f", "value": 5.0, "width": 1}, {"from": "pandas", "to": "\u2714\ufe0f ID_3 --- AIMO: KerasNLP Starter \u2714\ufe0f", "value": 5.0, "width": 1}, {"from": "pandas", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 5.0, "width": 1}, {"from": "tqdm", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 5.0, "width": 1}, {"from": "tqdm", "to": "\u2714\ufe0f ID_2 --- AIMO Mixtral Baseline \u2714\ufe0f", "value": 5.0, "width": 1}, {"from": "gc", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "gc", "to": "\u2714\ufe0f ID_2 --- AIMO Mixtral Baseline \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "gc", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "re", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "re", "to": "\u2714\ufe0f ID_3 --- AIMO: KerasNLP Starter \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "re", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 4.0, "width": 1}, {"from": "sys", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 3.0, "width": 1}, {"from": "sys", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 3.0, "width": 1}, {"from": "subprocess", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 3.0, "width": 1}, {"from": "subprocess", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 3.0, "width": 1}, {"from": "collections", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 3.0, "width": 1}, {"from": "collections", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 3.0, "width": 1}, {"from": "numpy", "to": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "value": 5.0, "width": 1}, {"from": "numpy", "to": "\u2714\ufe0f ID_3 --- AIMO: KerasNLP Starter \u2714\ufe0f", "value": 5.0, "width": 1}, {"from": "numpy", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 5.0, "width": 1}, {"from": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "to": "time", "value": 2.0, "width": 1}, {"from": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "to": "math", "value": 2.0, "width": 1}, {"from": "\u2714\ufe0f ID_1 --- Improved Code Interpretation \u2714\ufe0f", "to": "random", "value": 2.0, "width": 1}, {"from": "time", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 2.0, "width": 1}, {"from": "math", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 2.0, "width": 1}, {"from": "random", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 2.0, "width": 1}, {"from": "\u2714\ufe0f ID_3 --- AIMO: KerasNLP Starter \u2714\ufe0f", "to": "os", "value": 2.0, "width": 1}, {"from": "\u2714\ufe0f ID_3 --- AIMO: KerasNLP Starter \u2714\ufe0f", "to": "keras", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_3 --- AIMO: KerasNLP Starter \u2714\ufe0f", "to": "keras_nlp", "value": 1.0, "width": 1}, {"from": "os", "to": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "value": 2.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "plotly", "value": 4.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "IPython", "value": 3.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "vllm", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "aimo", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "sympy", "value": 2.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "typing", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "kaggle_datasets", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "dataclasses", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "datetime", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "zipfile", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "glob", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "warnings", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "requests", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "textwrap", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "hashlib", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "imageio", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "urllib", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "pickle", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "shutil", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "string", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "json", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "copy", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "gzip", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "ast", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "io", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "seaborn", "value": 1.0, "width": 1}, {"from": "\u2714\ufe0f ID_4 --- AIMO - Let\u0027s Learn Together \u2714\ufe0f", "to": "PIL", "value": 1.0, "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true,
+        "filter": "physics"
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

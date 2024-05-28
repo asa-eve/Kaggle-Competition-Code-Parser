@@ -1,0 +1,11 @@
+{
+    "competition_url": "https://www.kaggle.com/competitions/ai-mathematical-olympiad-prize",
+    "competitions_sort_by": "vote count",
+    "competitions_amount": 10,
+    "CSVs_SAVE_DIR": "C:\\__to save\\ML courses\\Projects\\1 - Kaggle Competition Parsing\\Kaggle notebooks CSVs\\",
+    "GRAPH_SAVE_DIR": "C:\\__to save\\ML courses\\Projects\\1 - Kaggle Competition Parsing\\Graphs\\",
+    "no_sublibraries": 1,
+    "LLM_model_name": "llama3",
+    "LLM_temperature": 0.5,
+    "show_first_five": 0
+}

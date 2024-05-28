@@ -437,27 +437,20 @@ if not PRIVATE:
 Self-consistency is a modification of the standard greedy decoding in reasoning pipelines via sampling several diverse answers followed by aggregation, e.g., most common answer ([SC-CoT paper](https://arxiv.org/pdf/2203.11171.pdf)).
 
 In this kernel, we will consider MMOS-DeepSeekMath-7B RL-tuned backbone; in my experiments, this model produces more consistent code reasoning and the code block execution will allow us to decrease arithmetic hallucinations.
-","['AI Mathematical Olympiad - Progress Prize 1', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['torch', 'transformers', 'pandas', 'tqdm', 'gc', 're', 'sys', 'subprocess', 'collections', 'numpy']","A Machine Learning code written in Python!
+","['AI Mathematical Olympiad - Progress Prize 1', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['torch', 'transformers', 'pandas', 'tqdm', 'gc', 're', 'sys', 'subprocess', 'collections', 'numpy']","Here is a summary of the unique aspects of this Machine Learning code written in Python:
 
-Here are the unique aspects of this code:
+1. **Pre-trained Model**: The code uses the `AutoModelForCausalLM` pre-trained model from the Hugging Face Transformers library to perform text generation tasks.
+2. **Custom Pipeline**: A custom pipeline is created using the `transformers.pipeline` function, which integrates the pre-trained model with a tokenizer and performs text-to-text generation tasks.
+3. **CUDA Support**: The code uses CUDA acceleration for GPU-based computations using the PyTorch backend.
+4. **Memory-Efficient SDP**: The code enables memory-efficient sparse differentiated programming (SDP) using the `torch.backends.cuda.enable_mem_efficient_sdp` function, which helps to reduce memory usage and improve performance.
+5. **Regular Expressions**: The code uses regular expressions (regex) to parse and extract specific patterns from generated text output.
+6. **Subprocess Execution**: The code uses the `subprocess` module to execute shell commands and capture their output, which is used to generate code results.
+7. **Error Handling**: The code includes try-except blocks to handle errors and exceptions during processing and execution of code.
+8. **Data Processing**: The code processes a CSV file containing mathematical problems and answers using the Pandas library and performs data manipulation tasks such as filtering and grouping.
+9. **Natural Language Reasoning**: The code integrates natural language reasoning with programming to solve mathematical problems, which is used to generate answers for each problem.
+10. **Submission Generation**: The code generates a submission CSV file containing the predicted answers and their corresponding IDs.
 
-**1. Pretrained Model**: The code uses a pre-trained model `AutoModelForCausalLM` from the Hugging Face Transformers library, which is specifically designed for causal language modeling tasks.
-
-**2. Custom Pipeline**: A custom pipeline is created using the `pipeline` function from Transformers, which takes in the pre-trained model and tokenizer as inputs. This pipeline is used to generate text based on a given input prompt.
-
-**3. Natural Language Reasoning**: The code integrates natural language reasoning with programming to solve mathematical problems. It uses the generated text output from the pipeline to parse and evaluate mathematical expressions.
-
-**4. Error Handling**: The code includes robust error handling using `try`-`except` blocks to handle exceptions and errors that may occur during the execution of the code.
-
-**5. Caching and Memory Management**: The code uses `torch.cuda.empty_cache()` to empty the GPU cache and `gc.collect()` to collect garbage, which helps manage memory efficiently.
-
-**6. Repetition and Averaging**: The code runs multiple iterations (repetitions) for each problem to generate multiple outputs, and then averages or selects the best output based on certain criteria (e.g., most common answer).
-
-**7. Submission Generation**: The final answers are stored in a Pandas dataframe and exported as a CSV file (`submission.csv`) for submission.
-
-**8. Private vs Public Mode**: The code has a private mode (`PRIVATE = True`) that uses different settings and data sources compared to the public mode (`PRIVATE = False`).
-
-These unique aspects demonstrate the complexity and creativity of this Machine Learning code!"
+Overall, this code demonstrates advanced techniques in machine learning, natural language processing, and data processing, particularly in the context of solving mathematical problems using pre-trained models and custom pipelines."
 Improved Code Interpretation,https://www.kaggle.com/code/abdurrafae/improved-code-interpretation,20.0,,gold,189,10472,51.1s - GPU T4 x2,1 month,"## Forked From  https://kaggle.com/code/xiaoz259/pure-rng/notebook
 
 
@@ -1564,25 +1557,19 @@ Change temperature based on question lenght
 Self-consistency is a modification of the standard greedy decoding in reasoning pipelines via sampling several diverse answers followed by aggregation, e.g., most common answer ([SC-CoT paper](https://arxiv.org/pdf/2203.11171.pdf)).
 
 In this kernel, we will consider MMOS-DeepSeekMath-7B RL-tuned backbone; in my experiments, this model produces more consistent code reasoning and the code block execution will allow us to decrease arithmetic hallucinations.
-","['AI Mathematical Olympiad - Progress Prize 1', 'accelerate wheel/whl', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['time', 'torch', 'gc', 'transformers', 'pandas', 'tqdm', 're', 'sys', 'subprocess', 'math', 'random', 'collections', 'numpy.random', 'numpy']","Here's a summary of the unique aspects of this Machine Learning code written in Python:
+","['AI Mathematical Olympiad - Progress Prize 1', 'accelerate wheel/whl', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['time', 'torch', 'gc', 'transformers', 'pandas', 'tqdm', 're', 'sys', 'subprocess', 'math', 'random', 'collections', 'numpy.random', 'numpy']","Here is a summary of the unique aspects of this Machine Learning code written in Python:
 
-1. **Text Generation**: The code uses a text generation model to generate text based on input prompts. It takes into account previous generated output (past key) and uses it as context for future generations.
+1. **Generative Model**: The code appears to be using a generative model, possibly based on transformer architecture, to generate text outputs.
+2. **Tokenization**: The code uses tokenization to process input texts and generates output tokens using a tokenizer.
+3. **Conditional Generation**: The code allows for conditional generation of text outputs by specifying the past key values (USE_PAST_KEY) and temperature (temperature_ inner).
+4. **Stop Words**: The code includes stop words that are used to conditionally generate text outputs based on the presence of specific stop words in the input.
+5. **Evaluation Metrics**: The code uses evaluation metrics such as best answer, best count, and occurrences to determine the quality of generated text outputs.
+6. **Dataframe Manipulation**: The code manipulates a dataframe (df) to store results, answers, and statistics.
+7. **Private Mode**: The code has a private mode that allows for custom processing of data, including converting arrays to numpy arrays and performing statistical analysis.
+8. **CSV Output**: The code writes the final results to a CSV file named ""submission.csv"".
+9. **Shell Command Execution**: The code executes a shell command using subprocess.check_output() to run an external program (code.py) with a timeout of 7 seconds.
 
-2. **Evaluation**: The generated text is evaluated using two metrics: ""code"" output, which is the output of running Python code, and ""result"" output, which is the result of processing the generated text. The best answer is tracked based on the frequency of correct answers.
-
-3. **Private Mode**: The code has a private mode where it processes additional data (df) and compares its predictions with actual answers. It also calculates the match rate between predicted and actual answers.
-
-4. **Submission**: The code generates a submission file ""submission.csv"" containing the best answer for each question, along with other statistics.
-
-5. **Code Execution**: The code executes Python code (code.py) using the `subprocess` module and prints the output to the console.
-
-Unique aspects of this code include:
-
-- Integration of text generation and evaluation metrics
-- Use of previous generated output as context for future generations
-- Private mode processing and comparison with actual answers
-- Submission file generation and statistics tracking
-- Execution of Python code using `subprocess` module"
+These unique aspects suggest that this code is part of a natural language processing (NLP) project, possibly for generating text outputs or answering mathematical questions based on a dataset."
 AIMO Mixtral Baseline,https://www.kaggle.com/code/thedrcat/aimo-mixtral-baseline,3.0,,gold,162,8192,2253.0s - GPU T4 x2,2 months,"# credits: https://www.kaggle.com/code/aatiffraz/prompt-prediction-w-mixtral-mistral7b-gemma-llama
 !pip install -U /kaggle/input/bitsandbytes-0-42-0-py3-none-any-whl/bitsandbytes-0.42.0-py3-none-any.whl -qq
 import torch
@@ -1798,20 +1785,18 @@ if not PRIVATE:
     print(f'{df.match.sum()} matches in {len(df)} examples')
 
 ",,"['AI Mathematical Olympiad - Progress Prize 1', 'bitsandbytes-0.42.0-py3-none-any.whl']","['torch', 'transformers', 'pandas', 'tqdm', 'gc']","Unique aspects:
-1. The use of the Mixtral8x7b model for causal language generation.
-2. The integration of BitsAndBytesConfig to enable quantization and compute dtype.
-3. The application of gradient checkpointing to prevent GPU memory overflow.
+1. The use of the Mixtral-8x7b model, a pre-trained causal language model for mathematical reasoning.
+2. The integration of quantization techniques using BitsAndBytesConfig to optimize GPU memory usage.
 
 Steps taken:
-1. Import necessary libraries, including PyTorch, Transformers, Pandas, and TQDM.
-2. Load the pre-trained Mixtral8x7b model and tokenizer.
-3. Define a custom function to generate prompts for the model based on mathematical problems.
-4. Process the output of the model's generation pipeline to extract code blocks and execute them to obtain results.
+1. Import necessary libraries, including PyTorch and transformers.
+2. Load the pre-trained Mixtral-8x7b model and tokenizer.
+3. Define a custom pipeline for text generation using the transformers library.
+4. Process the output of the pipeline to extract code blocks and execute them to obtain results.
 5. Integrate natural language reasoning with programs to solve mathematical problems.
-6. Use self-consistency and generated code reasoning evaluation to improve arithmetic hallucinations.
 
 Summary:
-This code uses the Mixtral8x7b model for causal language generation, integrating it with BitsAndBytesConfig for quantization and compute dtype. The code also employs gradient checkpointing to prevent GPU memory overflow."
+This code uses the Mixtral-8x7b model, a pre-trained causal language model for mathematical reasoning, to integrate natural language reasoning with programs to solve mathematical problems. It also employs quantization techniques using BitsAndBytesConfig to optimize GPU memory usage."
 AIMO: KerasNLP Starter,https://www.kaggle.com/code/awsaf49/aimo-kerasnlp-starter,,,gold,146,13804,783.0s - GPU P100,1 month,"<center><img src=""https://keras.io/img/logo-small.png"" alt=""Keras logo"" width=""100""><br/>
 This starter notebook is provided by the Keras team.</center>
 # AI Math Olympiad with [KerasNLP](https://github.com/keras-team/keras-nlp) and [Keras](https://github.com/keras-team/keras)
@@ -2550,42 +2535,17 @@ We can see that after fine-tuning, the model is following instructions more accu
 * [Fine-tune Gemma models in Keras using LoRA](https://www.kaggle.com/code/nilaychauhan/fine-tune-gemma-models-in-keras-using-lora)
 * [Parameter-efficient fine-tuning of GPT-2 with LoRA](https://keras.io/examples/nlp/parameter_efficient_finetuning_of_gpt2_with_lora/)
 * [Gemma - KerasNLP](https://keras.io/api/keras_nlp/models/gemma/)
-","['AI Mathematical Olympiad - Progress Prize 1', 'Keras Lib Dataset', 'Math QSA Dataset']","['os', 'keras', 'keras_nlp', 'numpy', 'pandas', 'tqdm.notebook', 'plotly.graph_objs', 'plotly.express', 'IPython.display', 're']","You're fine-tuning a Machine Learning model using Low-Rank Adaptation (LoRA) in Python!
+","['AI Mathematical Olympiad - Progress Prize 1', 'Keras Lib Dataset', 'Math QSA Dataset']","['os', 'keras', 'keras_nlp', 'numpy', 'pandas', 'tqdm.notebook', 'plotly.graph_objs', 'plotly.express', 'IPython.display', 're']","You are working on fine-tuning a pre-trained language model using Low-Rank Adaptation (LoRA). LoRA is a method used to efficiently fine-tune large language models by freezing the weights of the original model and injecting trainable rank-decomposition matrices.
 
-**What is LoRA?**
-LoRA is a method to fine-tune large language models (LLMs) efficiently. It involves freezing the weights of the LLM and injecting trainable rank-decomposition matrices.
+In this code, you are using LoRA with a rank of 4, which means that the additional layers added to the model have fewer parameters to learn compared to the original model. This helps save memory usage while still allowing for some fine-tuning to occur.
 
-In an LLM, you have a pre-trained dense layer represented by a $d \times d$ weight matrix, denoted as $W_0$. You initialize two additional dense layers, labeled as $A$ and $B$, with shapes $d \times r$ and $r \times d$, respectively. Here, $r$ denotes the rank, which is typically much smaller than $d$.
+The advantages of using LoRA include:
 
-The model's output was computed using the equation `output = W_0 * x + b`, where `x` is the input and `b` is the bias term. LoRA modifies this equation by introducing two new matrices, $A$ and $B$, as follows:
+1. Reduced memory usage: The additional layers added by LoRA have fewer parameters to learn, which reduces the overall memory usage.
+2. Improved accuracy: Fine-tuning a pre-trained model with LoRA can improve its accuracy on specific tasks or datasets.
+3. Flexibility: LoRA allows you to fine-tune specific parts of the model while keeping other parts frozen, giving you more control over the fine-tuning process.
 
-`output = (W_0 @ A) @ B + b`
-
-Here, `@` denotes matrix multiplication.
-
-The key idea behind LoRA is to reduce the dimensionality of the input data while preserving its essential features. This is achieved by multiplying the input with a low-rank matrix $A$ and then projecting it onto a lower-dimensional space using a second low-rank matrix $B$. By doing so, you can significantly reduce the number of model parameters while maintaining performance.
-
-**Inference on AIMO Data**
-You've inferred your model on the AIMO (competition) dataset. You used the `infer` function to generate predictions for each problem in the test set and stored them in a DataFrame called `test_pred_ df`.
-
-You also prepared a submission file by converting the prediction DataFrame into a CSV file named ""submission.csv"" using the `to_csv` method.
-
-**Tips for Improvement**
-To enhance performance, you can try:
-
-1.  Train on the full data instead of first 1000 samples.
-2.  Use the non-instruction-tuned version of Gemma.
-3.  Increase the `sequence_length`.
-4.  Experiment with advanced prompt engineering techniques.
-5.  Implement augmentation to increase the number of samples.
-6.  Utilize a learning rate scheduler.
-
-**References**
-You've referenced some useful resources for further reading:
-
-1. [Fine-tune Gemma models in Keras using LoRA](https://www.kaggle.com/code/nilaychauhan/fine-tune-gemma-models-in-keras-using-lora)
-2. [Parameter-efficient fine-tuning of GPT-2 with LoRA](https://keras.io/examples/nlp/parameter_efficient_finetuning_of_gpt2_with_lora/)
-3. [Gemma - KerasNLP](https://keras.io/api/keras_nlp/models/gemma/)"
+To summarize, LoRA is a technique that helps reduce memory usage and improves accuracy by adding trainable rank-decomposition matrices to a pre-trained language model."
 AIMO - Let's Learn Together,https://www.kaggle.com/code/dschettler8845/aimo-let-s-learn-together,,,gold,124,3590,417.8s - GPU T4 x2,11 days,"# Run this to enable CSS types
 from IPython.core.display import HTML
 
@@ -7502,21 +7462,33 @@ for test_ex_df, submission_ex_df in AIMO_ITER_TEST:
 <br>
 
 All of our cross validation will happen within a block that only runs if we are debugging.
-","['AI Mathematical Olympiad - Progress Prize 1', 'AIMO External Dataset', 'AMIO parsed ""Art Of Problem Solving"" website', 'antlr4-python3-runtime package 4.11', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'External Datasets After Preprocessing for AIMO', 'My CSS Styles', 'open-math-mistral', 'vllm T4 Fix', 'vllm_whl']","['IPython.core.display', 'transformers', 'vllm', 'torch;', 'aimo', 'pandas', 'numpy', 'sympy', 'sympy.parsing.latex', 'sklearn;', 'typing', 'kaggle_datasets', 'dataclasses', 'collections', 'datetime', 'zipfile', 'glob', 'subprocess', 'warnings', 'requests', 'textwrap', 'hashlib', 'imageio', 'IPython', 'urllib', 'pickle', 'random', 'shutil', 'string', 'json', 'copy', 'math', 'time', 'gzip', 'ast', 'sys', 'io', 'gc', 're', 'os', 'matplotlib.pyplot', 'tqdm.notebook', 'plotly.express', 'seaborn', 'PIL', 'matplotlib;', 'plotly']","I'm an AI assistant, and my purpose is to summarize unique aspects of Machine Learning code written in Python.
+","['AI Mathematical Olympiad - Progress Prize 1', 'AIMO External Dataset', 'AMIO parsed ""Art Of Problem Solving"" website', 'antlr4-python3-runtime package 4.11', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'External Datasets After Preprocessing for AIMO', 'My CSS Styles', 'open-math-mistral', 'vllm T4 Fix', 'vllm_whl']","['IPython.core.display', 'transformers', 'vllm', 'torch;', 'aimo', 'pandas', 'numpy', 'sympy', 'sympy.parsing.latex', 'sklearn;', 'typing', 'kaggle_datasets', 'dataclasses', 'collections', 'datetime', 'zipfile', 'glob', 'subprocess', 'warnings', 'requests', 'textwrap', 'hashlib', 'imageio', 'IPython', 'urllib', 'pickle', 'random', 'shutil', 'string', 'json', 'copy', 'math', 'time', 'gzip', 'ast', 'sys', 'io', 'gc', 're', 'os', 'matplotlib.pyplot', 'tqdm.notebook', 'plotly.express', 'seaborn', 'PIL', 'matplotlib;', 'plotly']","I'd be happy to summarize the unique aspects of this Machine Learning code written in Python.
 
-The provided code appears to be a part of a larger project focused on generating code based on problem statements using the VLLM (Vitality Language Model) or another text generation pipeline. Here are some interesting features:
+**Code Overview**
 
-1. **InferenceHandler**: This class is responsible for running inference on given problems and storing results in a DataFrame. It takes various parameters, such as model path, tool instructions, temperature, number of repetitions, etc.
+The code is part of a larger AI-powered system for generating solutions to math problems. It appears to involve a combination of natural language processing (NLP), text generation, and machine learning techniques.
 
-2. **Code Generation**: The code uses the VLLM or another text generation pipeline to generate code based on problem statements. This process involves running multiple iterations (repetitions) with adjustable temperatures and maximum new tokens allowed.
+**Unique Aspects**
 
-3. **Aggregation**: The generated outputs are then aggregated into final results using the `aggregate_results` function, which takes boxed and code results as input.
+1. **Inference Handling**: The code defines an `InferenceHandler` class that performs inference on input data using a pre-trained model.
+2. **Text Generation**: The code uses various text generation pipelines to generate solutions to math problems.
+3. **Cross-Validation**: The code includes a block for cross-validation, which is only executed when the system is in debug mode.
+4. **Aggregation of Results**: The code defines an `aggregate_results` function that aggregates the results from multiple runs of the inference handler.
+5. **Handling Errors and Exceptions**: The code includes various try-except blocks to handle errors and exceptions during execution.
 
-4. **Cross Validation**: A subset of examples from the main dataset is used for cross-validation (CV). This is done within a block that only runs if debugging mode is enabled.
+**Key Functions**
 
-5. **Error Handling**: The code includes error handling mechanisms using `try-except` blocks to handle potential errors during execution, such as file removal and processing output.
+1. `infer`: performs inference on input data using the pre-trained model.
+2. `prepare_problem_statement`: prepares a math problem statement for text generation.
+3. `run_vllm_pipeline`/`run_pipeline`: runs text generation pipelines using VLLM or a standard pipeline, respectively.
+4. `process_output`: processes the output from text generation pipelines.
 
-These are some of the unique aspects of this Machine Learning code written in Python. If you have any specific questions or would like me to clarify certain parts, feel free to ask!"
+**Data Structures**
+
+1. `DataFrame`: used to store and manipulate data, including input math problems and their corresponding solutions.
+2. Lists: used to store arrays of results and intermediate values.
+
+Please let me know if you'd like me to summarize any specific aspects or sections of this code further!"
 AIMO OpenMath-Mistral Baseline,https://www.kaggle.com/code/olyatsimboy/aimo-openmath-mistral-baseline,1.0,,gold,91,3453,447.5s - GPU T4 x2,2 months,"# credits:
 # https://www.kaggle.com/code/aatiffraz/prompt-prediction-w-mixtral-mistral7b-gemma-llama
 # https://www.kaggle.com/code/thedrcat/aimo-mixtral-baseline
@@ -7798,18 +7770,20 @@ For more details please refer to the [paper](https://arxiv.org/pdf/2402.10176.pd
 
 In this baseline we will consider [OpenMath-Mistral-7B-v0.1](https://huggingface.co/nvidia/OpenMath-Mistral-7B-v0.1-hf)
 ","['AI Mathematical Olympiad - Progress Prize 1', 'bitsandbytes-0.42.0-py3-none-any.whl', 'open-math-mistral']","['torch', 'transformers', 'pandas', 'tqdm', 'gc', 're']","Unique aspects:
-1. The use of OpenMath models, specifically OpenMath- Mistral-7B-v0.1, for solving mathematical problems.
-2. The integration of BitsAndBytesConfig for quantization and compute dtype.
+1. The use of OpenMath models trained on a synthetic dataset created using PoT-like prompting for Mixtral model.
+2. The integration of BitsAndBytesConfig to perform quantization and optimize the model for inference.
 
 Steps taken:
-1. Import necessary libraries, including torch, transformers, and pandas.
-2. Load the pre-trained OpenMath-Mistral-7B-v0.1 model and tokenizer.
-3. Define a prompt template for generating solutions to mathematical problems.
-4. Iterate through a dataset of math problems and generate solutions using the pipeline.
-5. Parse generated text to extract answers and append them to the answers list.
-6. Save the answers to a submission.csv file.
+1. Installed necessary packages, including torch and transformers.
+2. Loaded pre-trained OpenMath-Mistral-7B-v0.1 model and tokenizer.
+3. Set up the pipeline for text generation using the loaded model and tokenizer.
+4. Read in test and train datasets from Kaggle input.
+5. Formatted prompts for each problem in the dataset using a template.
+6. Generated solutions for each problem using the text generation pipeline.
+7. Extracted answers from generated solutions using regular expressions.
+8. Saved the answers to a submission.csv file.
 
-Note: The code appears to be solving a specific mathematical olympiad problem, so it's not general-purpose machine learning code."
+Summary: This code implements a machine learning model for generating mathematical solutions using Python. The model is trained on a synthetic dataset and uses quantization and optimization techniques to improve its performance. The code reads in datasets, generates prompts and solutions for each problem, and extracts the final answers."
 Updated Code Interpretation,https://www.kaggle.com/code/lewtun/updated-code-interpretation,21.0,,gold,83,5928,430.5s - GPU T4 x2,23 days,"## Forked from https://www.kaggle.com/code/abdurrafae/improved-code-interpretation
 **Lewis:** the only changes in this notebook are those needed to run the original one with the new Kaggle evaluation API
 ## Forked From  https://kaggle.com/code/xiaoz259/pure-rng/notebook
@@ -8936,25 +8910,37 @@ Change temperature based on question lenght
 Self-consistency is a modification of the standard greedy decoding in reasoning pipelines via sampling several diverse answers followed by aggregation, e.g., most common answer ([SC-CoT paper](https://arxiv.org/pdf/2203.11171.pdf)).
 
 In this kernel, we will consider MMOS-DeepSeekMath-7B RL-tuned backbone; in my experiments, this model produces more consistent code reasoning and the code block execution will allow us to decrease arithmetic hallucinations.
-","['AI Mathematical Olympiad - Progress Prize 1', 'accelerate wheel/whl', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['time', 'aimo', 'torch', 'gc', 'transformers', 'pandas', 'tqdm', 're', 'sys', 'subprocess', 'math', 'random', 'collections', 'numpy.random', 'numpy']","The unique aspects of this Machine Learning code written in Python are:
+","['AI Mathematical Olympiad - Progress Prize 1', 'accelerate wheel/whl', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['time', 'aimo', 'torch', 'gc', 'transformers', 'pandas', 'tqdm', 're', 'sys', 'subprocess', 'math', 'random', 'collections', 'numpy.random', 'numpy']","Here's a summary of the unique aspects of the Machine Learning code written in Python:
 
-1. **Text Generation**: The code uses a transformer-based language model to generate text based on a given prompt.
+**Code Generation**
 
-2. **Code Evaluation**: It also evaluates the generated code using `eval()` and checks if it matches the expected output.
+The code uses a transformer-based model to generate code snippets. The input prompt is processed using a tokenizer, and the generated output is decoded back into text.
 
-3. **Counter-Based Analysis**: The code counts the occurrences of different outputs and identifies the most common ones, which could be useful for analyzing patterns in the data.
+**Prompt Processing**
 
-4. **Conditional Statements**: It uses conditional statements (e.g., `if`, `elif`, `else`) to control the flow of the program based on certain conditions.
+The code takes a prompt as input, which is then processed by the tokenizer to create an encoding that can be fed into the model. The prompt is used to condition the generated code output.
 
-5. **Error Handling**: The code includes try-except blocks to handle exceptions and errors that might occur during execution.
+**Code Evaluation**
 
-6. **Subprocess Execution**: It uses the subprocess module to execute a shell command, specifically to run the generated code in an isolated environment.
+The generated code snippets are evaluated using the `eval` function, and the result is rounded to the nearest thousand. This suggests that the goal of the code generation task is to generate code that produces a specific numerical value or range of values.
 
-7. **Statistics and Data Analysis**: The code calculates statistics (e.g., mean, count) and analyzes data using pandas, which is useful for summarizing and visualizing large datasets.
+**Stop Word Detection**
 
-8. **Private Mode**: It has a `PRIVATE` flag that enables additional features, such as converting output arrays to lists and calculating the match between predicted and actual answers.
+The code includes a stop word detection mechanism, which checks if the generated code output contains any stop words (e.g., ""print"", ""exit"", etc.). If a stop word is detected, the code generation process is terminated.
 
-These unique aspects demonstrate the code's ability to perform complex tasks, including text generation, code evaluation, data analysis, and error handling, which are essential skills for a Machine Learning model."
+**Code Output Processing**
+
+The generated code snippets are processed using a custom `process_text_output` function to extract relevant information or perform additional processing on the output.
+
+**Answer Tracking**
+
+The code keeps track of the best answer (i.e., the generated code snippet that produces the most common result) and updates it accordingly. This suggests that the goal is to generate code that produces a specific pattern or distribution of results.
+
+**Private Mode**
+
+The code includes a private mode, which is used to process the output in a special way (e.g., converting code outputs to arrays using NumPy). This suggests that there are additional processing steps required for certain inputs or outputs.
+
+Overall, this code appears to be a complex system for generating and evaluating code snippets based on input prompts."
 Deepseek Math,https://www.kaggle.com/code/jazivxt/deepseek-math,11.0,,gold,83,8470,234.6s - GPU P100,1 month,"import numpy as np
 import pandas as pd
 from collections import Counter
@@ -9138,18 +9124,17 @@ df[['id','answer']].to_csv(""submission.csv"", header=True, index=False)
 * Based on classification and parsing apply different reasoning/logic approaches for solving
 # Ｈ𝐀𝑷𝑷𝓎 🇰𝗮𝘨𝘨🇱𝖎Ｎɢ 💯
 ","['AI Mathematical Olympiad - Progress Prize 1', 'deepseek-math']","['numpy', 'pandas', 'collections', 're,', 'torch,', 'transformers', 'accelerate', 'signal,']","Unique aspects:
-1. The use of a custom pipeline for text generation using the transformers library, which enables integration with programs to solve mathematical problems.
-2. The employment of self-consistency and generated code reasoning evaluation to improve arithmetic hallucinations.
+1. The code utilizes MMOS-DeepSeekMath, a zero-shot machine learning model for mathematical reasoning.
+2. The integration of self-consistency and generated code reasoning evaluation to improve arithmetic hallucinations.
 
 Steps taken:
-1. Import necessary libraries, including numpy, pandas, and transformers.
-2. Define a function `process_output` to process the generated text output from the pipeline.
-3. Create a custom prompt for each problem using the tokenizer's `apply_chat_template` method.
-4. Use the pipeline to generate responses for each problem, with parameters such as max new tokens, do sample, temperature, and return full text.
-5. Process the generated responses using the `process_output` function.
-6. Calculate the final answers by applying a ranking algorithm to the processed outputs.
+1. Import necessary libraries, including PyTorch and transformers.
+2. Define the problem-solving function using the MMOS-DeepSeekMath model.
+3. Generate prompts for the model using a chat template.
+4. Process the output by splitting it into code and result sections.
+5. Run the generated code using the `subprocess` module to obtain the final answer.
 
-Note: The code appears to be a solution to a Kaggle competition, ""AI Mathematical Olympiad Prize"", which involved solving math problems using natural language processing and machine learning techniques."
+Note: The code appears to be part of a competition submission for the AI Mathematical Olympiad Prize, which is why there are credits and planned updates listed at the end."
 Let's Learn Together - DeepMind's AlphaGeometry,https://www.kaggle.com/code/dschettler8845/let-s-learn-together-deepmind-s-alphageometry,,,gold,76,1610,6.2s,1 month,"# Run this to enable CSS types
 from IPython.core.display import HTML
 def css_styling():
@@ -29804,29 +29789,21 @@ We can see by the imports that we are mostly dealing the **`geometry`** submodul
 We also include the license information here as found within the original file:
 * https://github.com/google-deepmind/alphageometry/blob/main/ar.py
 * **Apache License, Version 2.0**
-","['AI Mathematical Olympiad - Progress Prize 1', 'AlphaGeometry Github Repo', 'My CSS Styles']","['IPython.core.display', 'os', 'sys', 'tensorflow', 'pandas', 'numpy', 'sklearn;', 'kaggle_datasets', 'collections', 'datetime', 'zipfile', 'glob', 'Levenshtein', 'subprocess', 'warnings', 'requests', 'hashlib', 'imageio', 'IPython', 'sklearn', 'urllib', 'pickle', 'random', 'shutil', 'string', 'json', 'math', 'time', 'gzip', 'ast', 'io', 'gc', 're', 'matplotlib.colors', 'matplotlib.patches', 'plotly.graph_objects', 'matplotlib.pyplot', 'tqdm.notebook', 'plotly.express', 'tifffile', 'seaborn', 'PIL', 'matplotlib;', 'plotly', 'cv2', 'plotly.io', '__future__', 'typing', 'types', 'matplotlib', 'numpy.random']","Here's a summary of the unique aspects of this Machine Learning code written in Python:
+","['AI Mathematical Olympiad - Progress Prize 1', 'AlphaGeometry Github Repo', 'My CSS Styles']","['IPython.core.display', 'os', 'sys', 'tensorflow', 'pandas', 'numpy', 'sklearn;', 'kaggle_datasets', 'collections', 'datetime', 'zipfile', 'glob', 'Levenshtein', 'subprocess', 'warnings', 'requests', 'hashlib', 'imageio', 'IPython', 'sklearn', 'urllib', 'pickle', 'random', 'shutil', 'string', 'json', 'math', 'time', 'gzip', 'ast', 'io', 'gc', 're', 'matplotlib.colors', 'matplotlib.patches', 'plotly.graph_objects', 'matplotlib.pyplot', 'tqdm.notebook', 'plotly.express', 'tifffile', 'seaborn', 'PIL', 'matplotlib;', 'plotly', 'cv2', 'plotly.io', '__future__', 'typing', 'types', 'matplotlib', 'numpy.random']","Here are the unique aspects of the Machine Learning code written in Python:
 
-**Unique Aspects:**
+**Pair Generation**: The `pairs` method generates a generator that yields tuples containing two strings each representing a line and a point pair. This is done by iterating over a dictionary, splitting each key-value pair into its components (line and point), and then combining them to form a new tuple.
 
-1. **Custom Pair Generation**: The `pairs` method generates pairs of tuples representing line and point names, which are used to create equations for geometric constraints.
+**Name Generation**: The `name` method generates a unique name for a line-point pair by concatenating the line's name with the point's name, separated by a colon. This name is used as a key in another dictionary (`v2obj`) to store the corresponding line and point objects.
 
-2. **Hashing and Clustering**: The code uses a custom hashing function (`hashed`) and clustering algorithm (not explicitly shown) to group similar equation pairs together, allowing for efficient processing and merging of equivalent equations.
+**Mapping Objects**: The `map2obj` method maps a list of names (generated by the `name` method) to a list of points. This is done by iterating over the list of names, looking up each name in the `v2obj` dictionary, and then returning the corresponding point object.
 
-3. **Equation Merging**: The `merged` dictionary is used to merge equivalent equations, reducing the number of unique equations and improving computational efficiency.
+**Congruence Addition**: The `add_cong` method adds a congruence constraint between two line-point pairs. It first checks if one pair has a higher number than the other (based on some internal ordering), swaps them if necessary, and then names each point using the `name` method. Finally, it calls the parent class's `add_eq4` method to add the congruence constraint.
 
-4. **Customized Equation Generation**: The code generates custom equations based on the input geometric constraints using the `add_cong` method.
+**Ratios Generation**: The code generates ratios of distances between line-point pairs by iterating over all possible pairs of points (using the `pairs` generator) and checking if the ratio is within a certain range. If so, it adds the ratio to a set of ratios and also adds the corresponding congruence constraint.
 
-5. **Ratios Calculation**: The code calculates ratios between pairs of lines and points, taking into account numerical values and dependencies between them.
+**Why Explanation**: The code provides an explanation for why each congruence constraint holds by computing the difference between two line-point pairs (using the `minus` function) and then simplifying the expression using some internal logic. This is done in the `get_all_eqs_and_why` method, which yields a generator that produces all congruence constraints along with their explanations.
 
-6. **Why-Explanation Generation**: The `why_dict` dictionary is used to generate explanations for why certain equations are true, based on the input geometric constraints and dependencies.
-
-7. **Custom Data Structures**: The code uses custom data structures such as `defaultdict`, `Generator`, and `list[gm.Point]` to efficiently store and process geometric data.
-
-8. **Geometric Operations**: The code performs various geometric operations such as line and point manipulation, equation generation, and ratio calculation using Python's built-in arithmetic operators and methods.
-
-**Overall Insights:**
-
-This code appears to be part of a larger program that deals with solving geometric constraints in computer graphics or computational geometry. The unique aspects mentioned above indicate a focus on efficiency, scalability, and customization for specific problem domains."
+These unique aspects of the code demonstrate various machine learning techniques such as pair generation, name generation, mapping objects, congruence addition, ratios generation, and why explanation."
 Pure RNG,https://www.kaggle.com/code/xiaoz259/pure-rng,,,gold,72,5973,6.0s,1 month,"# credits:
 # https://www.kaggle.com/code/olyatsimboy/aimo-openmath-mistral-baseline
 # https://www.kaggle.com/code/aatiffraz/prompt-prediction-w-mixtral-mistral7b-gemma-llama
@@ -30281,22 +30258,26 @@ except:
 Self-consistency is a modification of the standard greedy decoding in reasoning pipelines via sampling several diverse answers followed by aggregation, e.g., most common answer ([SC-CoT paper](https://arxiv.org/pdf/2203.11171.pdf)).
 
 In this kernel, we will consider MMOS-DeepSeekMath-7B RL-tuned backbone; in my experiments, this model produces more consistent code reasoning and the code block execution will allow us to decrease arithmetic hallucinations.
-","['AI Mathematical Olympiad - Progress Prize 1', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['torch', 'transformers', 'pandas', 'tqdm', 'gc', 're', 'sys', 'subprocess', 'collections', 'numpy']","Here is a summary of the unique aspects of this Machine Learning code written in Python:
+","['AI Mathematical Olympiad - Progress Prize 1', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['torch', 'transformers', 'pandas', 'tqdm', 'gc', 're', 'sys', 'subprocess', 'collections', 'numpy']","Here are the unique aspects of the Machine Learning code written in Python:
 
-1. **Pre-trained Model**: The code uses a pre-trained AutoModelForCausalLM model, which is a type of transformer-based language model.
-2. **Text Generation Pipeline**: A pipeline is created using the `transformers` library to generate text based on input prompts.
-3. **Natural Language Reasoning**: The code integrates natural language reasoning with programming to solve mathematical problems.
-4. **Repetitive Processing**: The code processes output from the text generation pipeline multiple times (8 times by default) and keeps track of results and answers.
-5. **Error Handling**: The code has robust error handling, including catching exceptions and printing error messages.
-6. **Dataframe Manipulation**: The code uses Pandas dataframes to read in input data, process output, and write out results.
-7. **Subprocess Execution**: The code executes shell commands using the `subprocess` library to run Python scripts and timeout after 7 seconds.
-8. **CUDA Support**: The code enables CUDA support for faster processing on NVIDIA GPUs.
+1. **Pre-trained Model**: The code uses a pre-trained AutoModelForCausalLM model, which is a type of transformer-based language model that can be fine-tuned for specific tasks.
 
-Some notable libraries used in this code include:
+2. **Text Generation Pipeline**: A text generation pipeline is created using the Hugging Face Transformers library, which allows for generating text based on user input and prompts.
 
-* `transformers`: A popular library for natural language processing tasks, such as text generation and language modeling.
-* `torch`: A Python package for building and training neural networks.
-* `pandas`: A library for data manipulation and analysis.
-* `tqdm`: A library for creating progress bars in Python.
+3. **Custom Tokenizer**: The code uses a custom tokenizer to preprocess the input text and generate output.
 
-Overall, this code demonstrates a unique combination of natural language processing, machine learning, and programming to solve mathematical problems."
+4. **Memory-Efficient Cuda**: The code enables memory-efficient CUDA operations to improve performance when working with large datasets on NVIDIA GPUs.
+
+5. **Error Handling**: The code includes robust error handling mechanisms, such as try-except blocks, to handle exceptions and errors that may occur during the processing of input data.
+
+6. **Modular Code Organization**: The code is organized into modular sections, each responsible for a specific task or functionality, making it easier to maintain and update.
+
+7. **Data Preprocessing**: The code includes data preprocessing steps, such as reading in CSV files, handling missing values, and converting data types, to prepare the input data for processing.
+
+8. **Repetition and Sampling**: The code uses repetition and sampling techniques to generate multiple output responses for each input prompt, which can be useful for tasks that require generating diverse output options.
+
+9. **Counter-Based Frequency Analysis**: The code uses the Counter class from the collections module to analyze the frequency of generated output responses and identify the most common ones.
+
+10. **Submission Generation**: The code generates a submission file in CSV format based on the final answers, which can be used for evaluation or competition purposes.
+
+These unique aspects demonstrate the complexity and sophistication of the Machine Learning code written in Python, highlighting its ability to process natural language input, generate text output, and handle errors and exceptions."

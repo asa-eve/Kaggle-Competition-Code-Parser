@@ -439,27 +439,23 @@ Self-consistency is a modification of the standard greedy decoding in reasoning 
 In this kernel, we will consider MMOS-DeepSeekMath-7B RL-tuned backbone; in my experiments, this model produces more consistent code reasoning and the code block execution will allow us to decrease arithmetic hallucinations.
 ","['AI Mathematical Olympiad - Progress Prize 1', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['torch', 'transformers', 'pandas', 'tqdm', 'gc', 're', 'sys', 'subprocess', 'collections', 'numpy']","Here's a summary of the unique aspects of this Machine Learning code written in Python:
 
-1. **Pretrained Model**: The code uses a pretrained `AutoModelForCausalLM` from the `transformers` library, which is a causal language model that can generate text based on input prompts.
+1. **Pre-trained Model**: The code uses a pre-trained AutoModelForCausalLM model, which is loaded from a specified path using `AutoModelForCausalLM.from_pretrained()`. This allows for fine-tuning on specific tasks without requiring extensive training data.
 
-2. **Custom Pipeline**: A custom pipeline is created using the `pipeline` function from `transformers`, which allows for fine-grained control over the generation process.
+2. **Text Generation Pipeline**: A text generation pipeline is created using the `transformers` library, which enables natural language processing and generation capabilities. The pipeline is configured to generate text based on a given prompt and problem statement.
 
-3. **CUDA and Torch**: The code utilizes CUDA acceleration and the PyTorch framework to perform computations, including tensor operations and memory management.
+3. **Naive Parsing**: A custom parsing function called `naive_parse()` is used to extract numerical answers from generated text. This involves reversing the input string and checking for numbers in specific positions.
 
-4. **Memory-Efficient SDP**: The code enables memory-efficient sparse direct addressing (SDP) on CUDA devices using `torch.backends.cuda.enable_mem_efficient_sdp`.
+4. **Process Output**: Another custom function, `process_output()`, is used to process the output of the text generation pipeline. It attempts to execute the generated code, parse any boxed expressions (if present), and extract a numerical answer.
 
-5. **Natural Language Reasoning**: The code integrates natural language reasoning with programming to solve mathematical problems, which is a unique aspect of this project.
+5. **Repetitive Execution**: The code executes the text generation pipeline multiple times (5 or 2 times, depending on whether `PRIVATE` is True) with different prompts and problem statements. This allows for repeated attempts to generate accurate answers.
 
-6. **Error Handling and Processing**: The code includes robust error handling mechanisms to handle unexpected errors during processing, including exceptions and try-except blocks.
+6. **Counter-Based Answer Selection**: After processing the output of each execution, the code uses a `Counter` object to select the most common answer among the repetitions. If an answer is not available (i.e., -1), the code selects the next most common one.
 
-7. **Repetition and Diversity**: The code incorporates repetition and diversity in its generation process by using a loop with multiple iterations (n_repetitions) and a temperature parameter to control the randomness of generated text.
+7. **Submission Generation**: The final answers are then used to generate a submission CSV file, which contains the problem IDs and corresponding answers.
 
-8. **Answer Processing and Submission**: The code processes the generated answers, including parsing and evaluation, and submits the final results in a submission CSV file.
+8. **Model Evaluation**: In non-private mode (`PRIVATE=False`), the code evaluates the performance of the model by comparing its predicted answers with actual solutions in the training dataset. It calculates the number of matches between the two sets of answers.
 
-9. **Visualization and Printing**: The code includes various print statements throughout its execution, providing visualization of intermediate results and debugging information.
-
-10. **File I/O and Data Manipulation**: The code performs file input/output operations using Pandas to read and write CSV files, as well as data manipulation using NumPy and Pandas for array and dataframe operations.
-
-This code demonstrates advanced Machine Learning concepts, including natural language processing, text generation, and error handling, making it a unique and complex piece of code."
+These unique aspects showcase the creative use of natural language processing, text generation, and repetitive execution to solve mathematical problems."
 Improved Code Interpretation,https://www.kaggle.com/code/abdurrafae/improved-code-interpretation,20.0,,gold,189,10466,51.1s - GPU T4 x2,1 month,"## Forked From  https://kaggle.com/code/xiaoz259/pure-rng/notebook
 
 
@@ -1566,29 +1562,34 @@ Change temperature based on question lenght
 Self-consistency is a modification of the standard greedy decoding in reasoning pipelines via sampling several diverse answers followed by aggregation, e.g., most common answer ([SC-CoT paper](https://arxiv.org/pdf/2203.11171.pdf)).
 
 In this kernel, we will consider MMOS-DeepSeekMath-7B RL-tuned backbone; in my experiments, this model produces more consistent code reasoning and the code block execution will allow us to decrease arithmetic hallucinations.
-","['AI Mathematical Olympiad - Progress Prize 1', 'accelerate wheel/whl', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['time', 'torch', 'gc', 'transformers', 'pandas', 'tqdm', 're', 'sys', 'subprocess', 'math', 'random', 'collections', 'numpy.random', 'numpy']","Here's a summary of the unique aspects of this Machine Learning code written in Python:
+","['AI Mathematical Olympiad - Progress Prize 1', 'accelerate wheel/whl', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'open-math-mistral']","['time', 'torch', 'gc', 'transformers', 'pandas', 'tqdm', 're', 'sys', 'subprocess', 'math', 'random', 'collections', 'numpy.random', 'numpy']","Here is a summary of the unique aspects of this Machine Learning code written in Python:
 
-1. **Text Generation**: The code uses a tokenizer and a generation model to generate text based on input prompts. It also includes conditional statements to stop generation when certain conditions are met (e.g., reaching a specific length or encountering a specific sequence of characters).
+**Key Features:**
 
-2. **Evaluation Metrics**: The code tracks several evaluation metrics, including the number of correct answers for both text and code outputs. It also calculates the most common output values and prints them.
+1. **Generative Model**: The code uses a generative model to generate text output based on input prompts.
+2. **Tokenization and Decoding**: It utilizes tokenization and decoding techniques to process the generated text output.
+3. **Stop Words and Conditionals**: The code includes stop words and conditionals to filter out unwanted outputs and ensure the model produces relevant results.
 
-3. **Best Answer Selection**: The code selects the best answer based on the frequency of occurrences and updates a best answer variable accordingly.
+**Unique Aspects:**
 
-4. **Data Processing**: The code processes data from a Pandas dataframe, including filtering, grouping, and calculating statistics.
+1. **Context-Aware Generation**: The model generates text based on input prompts, taking into account context and semantics.
+2. **Code Output Evaluation**: It evaluates the generated code output using `eval()` and rounds the result to a specific value (in this case, 1000).
+3. **Answer Tracking and Statistics**: The code keeps track of the number of correct answers, best answer statistics, and question type counts.
+4. **Debugging and Visualization**: It includes debugging statements and visualizations to help diagnose issues and understand model performance.
 
-5. **File Input/Output**: The code reads and writes files to/from disk, including CSV files and a Python script file.
+**Technical Details:**
 
-6. **Subprocess Execution**: The code uses the `subprocess` module to execute a Python script file with a timeout of 7 seconds.
+1. **Python Libraries:** The code uses Python libraries such as NumPy, Pandas, and Scikit-learn for data processing and manipulation.
+2. **Subprocess and Shell Commands:** It utilizes subprocesses and shell commands to execute external programs and scripts.
+3. **File Input/Output:** The code reads and writes CSV files using the Pandas library.
 
-7. **Error Handling**: The code includes try-except blocks to handle errors and exceptions that may occur during execution.
+**Potential Improvements:**
 
-8. **Variable Management**: The code manages several variables, including dictionaries, counters, and arrays, to store and retrieve data.
+1. **Model Fine-Tuning**: The model could be fine-tuned for better performance on specific tasks or datasets.
+2. **Error Handling**: Improved error handling mechanisms could be implemented to handle exceptions and edge cases more effectively.
+3. **Visualization and Interpretability**: Additional visualization tools and techniques could be used to provide insights into the model's behavior and decision-making process.
 
-9. **Conditional Statements**: The code uses conditional statements (if-else) to control the flow of execution based on certain conditions or thresholds.
-
-10. **Looping**: The code includes loops (for-loops and while-loops) to iterate over data, perform calculations, and execute tasks multiple times.
-
-Overall, this code demonstrates a range of Machine Learning and programming concepts, including text generation, evaluation metrics, data processing, file input/output, subprocess execution, error handling, variable management, conditional statements, and looping."
+Overall, this code demonstrates a robust approach to generative modeling, text processing, and answer tracking in Python."
 AIMO Mixtral Baseline,https://www.kaggle.com/code/thedrcat/aimo-mixtral-baseline,3.0,,gold,162,8186,2253.0s - GPU T4 x2,2 months,"# credits: https://www.kaggle.com/code/aatiffraz/prompt-prediction-w-mixtral-mistral7b-gemma-llama
 !pip install -U /kaggle/input/bitsandbytes-0-42-0-py3-none-any-whl/bitsandbytes-0.42.0-py3-none-any.whl -qq
 import torch
@@ -1804,18 +1805,18 @@ if not PRIVATE:
     print(f'{df.match.sum()} matches in {len(df)} examples')
 
 ",,"['AI Mathematical Olympiad - Progress Prize 1', 'bitsandbytes-0.42.0-py3-none-any.whl']","['torch', 'transformers', 'pandas', 'tqdm', 'gc']","Unique aspects:
-1. The use of Mixtral8x7b, a large-scale language model for prompt prediction and generation.
-2. The integration of BitsAndBytesConfig for quantization-aware training to reduce memory usage.
+1. The use of the BitsAndBytesConfig to enable quantization and mixed-precision training for the Mixtral8x7b model.
+2. The integration of gradient checkpointing to prevent GPU memory overflow.
 
 Steps taken:
-1. Import necessary libraries, including torch, transformers, pandas, and tqdm.
+1. Install the necessary packages, including PyTorch and transformers.
 2. Load the pre-trained Mixtral8x7b model and tokenizer.
 3. Define a custom pipeline for text generation using the transformers library.
 4. Process the output of the pipeline to extract code blocks and execute them to obtain results.
 5. Integrate natural language reasoning with programs to solve mathematical problems.
 
 Summary:
-This code uses Mixtral8x7b, a large-scale language model, to predict and generate prompts for mathematical problems. It also employs BitsAndBytesConfig for quantization-aware training to reduce memory usage, enabling the model to handle larger datasets. The code then uses the generated prompts to solve mathematical problems and generates answers based on the decoded output."
+This code uses the BitsAndBytesConfig to enable quantization and mixed-precision training for the Mixtral8x7b model, allowing for more efficient training. It also employs gradient checkpointing to prevent GPU memory overflow. The code then generates prompts using a template-based approach and uses the Mixtral8x7b model to generate responses. The responses are parsed to extract numerical answers, which are then used to evaluate the performance of the model."
 AIMO: KerasNLP Starter,https://www.kaggle.com/code/awsaf49/aimo-kerasnlp-starter,,,gold,146,13798,783.0s - GPU P100,1 month,"<center><img src=""https://keras.io/img/logo-small.png"" alt=""Keras logo"" width=""100""><br/>
 This starter notebook is provided by the Keras team.</center>
 # AI Math Olympiad with [KerasNLP](https://github.com/keras-team/keras-nlp) and [Keras](https://github.com/keras-team/keras)
@@ -2554,29 +2555,28 @@ We can see that after fine-tuning, the model is following instructions more accu
 * [Fine-tune Gemma models in Keras using LoRA](https://www.kaggle.com/code/nilaychauhan/fine-tune-gemma-models-in-keras-using-lora)
 * [Parameter-efficient fine-tuning of GPT-2 with LoRA](https://keras.io/examples/nlp/parameter_efficient_finetuning_of_gpt2_with_lora/)
 * [Gemma - KerasNLP](https://keras.io/api/keras_nlp/models/gemma/)
-","['AI Mathematical Olympiad - Progress Prize 1', 'Keras Lib Dataset', 'Math QSA Dataset']","['os', 'keras', 'keras_nlp', 'numpy', 'pandas', 'tqdm.notebook', 'plotly.graph_objs', 'plotly.express', 'IPython.display', 're']","Let's summarize the unique aspects of this Machine Learning code written in Python:
+","['AI Mathematical Olympiad - Progress Prize 1', 'Keras Lib Dataset', 'Math QSA Dataset']","['os', 'keras', 'keras_nlp', 'numpy', 'pandas', 'tqdm.notebook', 'plotly.graph_objs', 'plotly.express', 'IPython.display', 're']","LoRA (Low-Rank Adaptation) is a method used to fine-tune large language models (LLMs) in an efficient way. It involves freezing the weights of the LLM and injecting trainable rank-decomposition matrices.
 
-**Low Rank Adaptation (LoRA)**: LoRA is a method used to fine-tune large language models (LLMs) in an efficient way. It involves freezing the weights of the LLM and injecting trainable rank-decomposition matrices.
+To use LoRA, you initialize two additional dense layers (A and B) with shapes d × r and r × d, respectively. The equation for the model's output becomes: `output = (W0 · x + b0) + (B · A · x)`, where W0 is the original dense layer, A and B are the trainable rank-decomposition matrices.
 
-In the provided code, LoRA is enabled for the Gemma model with a rank of 4. This reduces the number of trainable parameters from ~2.5 billion to ~1.3 million, making it more memory-efficient.
+LoRA saves memory because the smaller layers (A and B) have fewer parameters to learn compared to the big model. This means that even though the overall model might seem bigger, it's actually more efficient in terms of parameter usage.
 
-**Key Takeaways**:
+Unique aspects of this Machine Learning code written in Python:
 
-* LoRA helps reduce the memory usage of the model while fine-tuning.
-* The code uses Keras and Gemma models for language processing tasks.
-* Fine-tuning is performed using LoRA with a rank of 4.
-* The code includes utilities for extracting answers from model responses and preparing submission files.
+* Fine-tuning a Gemma model using LoRA
+* Using Keras to implement LoRA
+* Experimenting with different prompt engineering techniques
+* Inference on AIMO dataset and preparing submission file
+* Utilizing the `tqdm` library for progress bars
 
-**Future Improvements**:
+Some tips for improving performance:
 
 * Train on the full data instead of first 1000 samples.
-* Try using non-instruction-tuned version of Gemma.
-* Increase the sequence length.
+* Try using the non-instruction-tuned version of Gemma.
+* Increase the `sequence_length`.
 * Experiment with advanced prompt engineering techniques.
 * Implement augmentation to increase the number of samples.
-* Utilize a learning rate scheduler.
-
-This code provides a good starting point for exploring LoRA and fine-tuning Gemma models for language processing tasks."
+* Utilize a learning rate scheduler."
 AIMO - Let's Learn Together,https://www.kaggle.com/code/dschettler8845/aimo-let-s-learn-together,,,gold,124,3586,417.8s - GPU T4 x2,11 days,"# Run this to enable CSS types
 from IPython.core.display import HTML
 
@@ -7493,32 +7493,22 @@ for test_ex_df, submission_ex_df in AIMO_ITER_TEST:
 <br>
 
 All of our cross validation will happen within a block that only runs if we are debugging.
-","['AI Mathematical Olympiad - Progress Prize 1', 'AIMO External Dataset', 'AMIO parsed ""Art Of Problem Solving"" website', 'antlr4-python3-runtime package 4.11', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'External Datasets After Preprocessing for AIMO', 'My CSS Styles', 'open-math-mistral', 'vllm T4 Fix', 'vllm_whl']","['IPython.core.display', 'transformers', 'vllm', 'torch;', 'aimo', 'pandas', 'numpy', 'sympy', 'sympy.parsing.latex', 'sklearn;', 'typing', 'kaggle_datasets', 'dataclasses', 'collections', 'datetime', 'zipfile', 'glob', 'subprocess', 'warnings', 'requests', 'textwrap', 'hashlib', 'imageio', 'IPython', 'urllib', 'pickle', 'random', 'shutil', 'string', 'json', 'copy', 'math', 'time', 'gzip', 'ast', 'sys', 'io', 'gc', 're', 'os', 'matplotlib.pyplot', 'tqdm.notebook', 'plotly.express', 'seaborn', 'PIL', 'matplotlib;', 'plotly']","**Unique Aspects of Machine Learning Code Written in Python**
+","['AI Mathematical Olympiad - Progress Prize 1', 'AIMO External Dataset', 'AMIO parsed ""Art Of Problem Solving"" website', 'antlr4-python3-runtime package 4.11', 'bitsandbytes-0.42.0-py3-none-any.whl', 'deepseek-math', 'External Datasets After Preprocessing for AIMO', 'My CSS Styles', 'open-math-mistral', 'vllm T4 Fix', 'vllm_whl']","['IPython.core.display', 'transformers', 'vllm', 'torch;', 'aimo', 'pandas', 'numpy', 'sympy', 'sympy.parsing.latex', 'sklearn;', 'typing', 'kaggle_datasets', 'dataclasses', 'collections', 'datetime', 'zipfile', 'glob', 'subprocess', 'warnings', 'requests', 'textwrap', 'hashlib', 'imageio', 'IPython', 'urllib', 'pickle', 'random', 'shutil', 'string', 'json', 'copy', 'math', 'time', 'gzip', 'ast', 'sys', 'io', 'gc', 're', 'os', 'matplotlib.pyplot', 'tqdm.notebook', 'plotly.express', 'seaborn', 'PIL', 'matplotlib;', 'plotly']","A fascinating piece of Machine Learning code written in Python!
 
-This code appears to be a machine learning model for generating solutions to problems, specifically designed for the AIMO (Artificial Intelligence and Mathematics Online) platform.
+After analyzing the code, I've identified some unique aspects that are worth summarizing:
 
-Here are some unique aspects of this code:
+**1. Inference Handler**: The `InferenceHandler` class is a crucial component of this code. It handles inference tasks by running a model on a given problem and returning the predicted answer.
 
-1. **Complex Fragment Generation**: The code uses a combination of simple and complex instruction fragments to generate solutions. This approach allows for more nuanced and context-dependent responses.
-2. **Temperature Control**: The model incorporates temperature control, which helps regulate the generation process. Lower temperatures lead to more conservative responses, while higher temperatures enable more creative and innovative solutions.
-3. **Repetition Mechanism**: The code includes a repetition mechanism that allows the model to refine its answers based on user feedback or additional context.
-4. **Dataframe-based Inference**: The `infer_on_dataframe` method takes a pandas DataFrame as input and performs inference on the data, returning the predicted answers as a new DataFrame.
-5. **Cross-Validation**: The code includes a cross-validation mechanism that allows for testing and evaluation of the model's performance on a subset of the data (e.g., 50 examples).
+**2. Model Integration**: The code uses two models: `text_gen_pipeline` (VLLM) and `run_pipeline`. These models are integrated to generate predictions, which indicates that the authors are using a combination of natural language processing (NLP) and machine learning techniques.
 
-**Key Functions and Methods**
+**3. Code Generation**: The code generates code by running the model on a problem prompt. This is achieved through the `infer` method, which takes in a problem text and returns the predicted answer.
 
-1. `infer`: Takes a problem statement as input and generates a predicted solution using the trained model.
-2. `infer_on_dataframe`: Performs inference on a DataFrame containing problems and saves the results to a CSV file.
-3. `run_ pipeline`/`run_vllm_pipeline`: Executes the machine learning pipeline for generating solutions, either using the VLLM (Very Large Language Model) or a traditional pipeline.
+**4. Cross-Validation**: The authors implement cross-validation to evaluate their model's performance. They select a subset of 50 examples from the `ext_aimo_df` dataset for validation.
 
-**Technical Details**
+**5. Code Processing**: The code processes the generated outputs by applying the `process_output` function. This function is used to clean and transform the output into a usable format.
 
-1. **Tokenizer**: The code utilizes a tokenizer to preprocess problem statements and generate prompts for the model.
-2. **Model Path**: The `model_path` variable stores the path to the trained machine learning model.
-3. **Temperature Control**: The `temperature` variable controls the level of creativity and innovation in the generated solutions.
+**6. Error Handling**: The code includes error handling mechanisms, such as trying to remove a file (`""code_to_execute.py""`). This suggests that the authors are aware of potential errors and have taken steps to handle them.
 
-**Other Notes**
+**7. Data Preparation**: The code prepares data by selecting specific columns from the `ext_aimo_df` dataset and resetting the index. This indicates that the authors need to manipulate their data in some way before using it for inference or validation.
 
-1. The code includes a demo DataFrame (`demo_df`) for testing purposes.
-2. There is an `IS_ DEBUG` flag that controls whether the cross-validation mechanism is executed or not.
-3. The code uses the `tqdm` library to provide progress bars for iterative operations."
+These unique aspects demonstrate the complexity of this Machine Learning code, which involves integrating multiple models, generating code, and processing outputs."

@@ -1,7 +1,7 @@
 {
     "competition_url": "https://www.kaggle.com/competitions/ai-mathematical-olympiad-prize",
     "competitions_sort_by": "vote count",
-    "competitions_amount": 10,
+    "competitions_amount": 5,
     "CSVs_SAVE_DIR": "C:\\__to save\\ML courses\\Projects\\1 - Kaggle Competition Parsing\\Kaggle notebooks CSVs\\",
     "GRAPH_SAVE_DIR": "C:\\__to save\\ML courses\\Projects\\1 - Kaggle Competition Parsing\\Graphs\\",
     "no_sublibraries": 1,

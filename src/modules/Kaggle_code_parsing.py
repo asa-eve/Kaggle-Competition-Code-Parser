@@ -1,12 +1,13 @@
-from parsing_functions import *
-from visualization_functions import clean_library_names
 import argparse
 import os
 import ast
 
+from src.modules.parsing_functions import *
+from src.modules.visualization_functions import clean_library_names
+
 ###############################################################################################################  
 
-def Kaggle_code_parsing(competition_url, SORT_BY, NOTEBOOKS_AMOUNT, CSVs_SAVING_DIR, NO_SUBLIBRARIES):
+def Code_parsing(competition_url, SORT_BY, NOTEBOOKS_AMOUNT, CSVs_SAVING_DIR, NO_SUBLIBRARIES):
     
     for i in range(8): print("")
     print("")
@@ -78,4 +79,4 @@ if __name__ == "__main__":
     parser.add_argument('no_sublibraries', type=bool, help='Whether NOT to include sublibraries in the total libraries list or not. (0/1 - No/Yes)')
 
     args = parser.parse_args()
-    Kaggle_code_parsing(args.url, args.sort_by, args.amount, args.saving_dir, args.no_sublibraries)
+    Code_parsing(args.url, args.sort_by, args.amount, args.saving_dir, args.no_sublibraries)

@@ -10,12 +10,13 @@ import community as community_louvain
 
 import argparse
 
-from visualization_functions import *
+from src.modules.visualization_functions import *
 
 
 #######################################################################
 
 def building_html_graph(path_to_dataframe, SAVE_DIR, NO_SUBLIBRARIES):
+    
 
     print("")
     print("============== Visual Graph Construction =================")

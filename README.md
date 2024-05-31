@@ -7,7 +7,7 @@ The purpose of this code is to make improving Machine Learning skills using Kagg
 
 This project is a merely portfolio one - so I do not intend on improving or updating it in any way (for now).
 
-## Parsing (data)
+## **Parsing (data)** - [Selenium, Requests, Nbformat]
 Any competition can be parsed - as long as it's from Kaggle official website & not a closed type (means everyone can participate).
 
 **IMPORTANT INFORMATION**:
@@ -23,25 +23,30 @@ Any competition can be parsed - as long as it's from Kaggle official website & n
    --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
    Example 1 |  https://www.kaggle.com/code/example_1 | 0.88 | None | silver | 105 | 1352 | 13.1s - GPU T4 x2 | 2 months | ... | ... | ... | ['competition_dataset', 'open-math-mistral'] | [torch, transformers, pandas, tqdm, gc, re, ...]
       
-## **LLM notebooks summary**
+## **LLM notebooks summary** - [OLLAMA]
 Uses OLLAMA desktop application & python library - in order to create a short summary of each code from the dataframe. The decision of using this approach is deeply correlated with the requirements and speed, when using LLMs locally with 'transformers' library.
+
+**The following LLM output will be saved in dataframe and used in VISUALIZATION GRAPH section.**
 
 **INPUTS**:
 - `model name` - any model that's available to OLLAMA ([link to the models](https://ollama.com/library))
 - `model temperature` - regulation of "creativity" of the LLMs answers - the bigger, more creative [0.5 by default]
 
 **DEVELOPER'S NOTE**:
-- I'm not very good at prompt engineering - so you might consider improving the prompt and instructions as you like
+- I'm not very good at prompt engineering - so you might consider IMPROVING the prompt and instructions as you like
 - This part was made purely for saving time - I wasn't trying to push the limits, nor do I have enough memory to try bigger LLM models (14B, 70B parameters)
 - If you have access to OpenAI ChatGPT key - I suggest you do that, since it's quite good in terms of following user's instructions.
 
-**!!!!!! - The following LLM output will be saved in dataframe and used in VISUALIZATION GRAPH section - !!!!!!**
+## **Visual graph representation** - [networkx & pyvis]
+In order to build a graph, Louvain method (for community detection) was used. It allows to better distinguish code without analyzing it through, but based on Python libraries only.
 
-## **Visual graph representation** (networkx & pyvis)
+**INFO**:
+- `NODES` - python libraries & competition notebooks
+- `EDGES` - the edge between vertices exists, if the library was used in the code
+- `WEIGHT`
 
-
-- nodes - python libraries & competition notebooks
-- edges - the edge between vertices exists, if the library was used in the code
+**LLM SUMMARY**:
+- when pointing at the 'competition notebook' node - you will have a summary (generated on the previous step), so you can study it and decide, whether you want to spend your time on checking out certain notebooks (without looking in them)
 
 ## Installation & Usage
 

@@ -32,6 +32,10 @@ Uses OLLAMA desktop application & python library - in order to create a short su
 - `model name` - any model that's available to OLLAMA ([link to the models](https://ollama.com/library))
 - `model temperature` - regulation of "creativity" of the LLMs answers - the bigger, more creative [0.5 by default]
 
+<div align="center">
+<img align="center" src=figs/ollama.png width="100%"/>
+</div>
+
 **DEVELOPER'S NOTE**:
 - I'm not very good at prompt engineering - so you might consider IMPROVING the prompt and instructions as you like
 - This part was made purely for saving time - I wasn't trying to push the limits, nor do I have enough memory to try bigger LLM models (14B, 70B parameters)

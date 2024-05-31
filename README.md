@@ -1,31 +1,50 @@
-# Kaggle Competition Code Parser
+## Kaggle Competition Code Parser - LLM summarizer - Library visualizer
 The purpose of this code is to make improving Machine Learning skills using Kaggle much easier for new people. 
 
-It uses Large Language models (LLMs) powered by OLLAMA app in order to make summary of the code. 
+- **Parsing** (only for Firefox) - Python code using Selenium to get valuable information (public score, private score, upvotes, views, etc.)
+- **Code Summarization** - based on Large Language models (LLMs) powered by OLLAMA desktop app
+- **Libraries Visualization** - graph representation using Louvain method (for community detection)
 
-Visual representation makes it easier to see which Python libraries are being mostly used by the programmers - so one can either make a list of which libraries are quite popular for which ML areas, but also look at how people approach the competition problems differently.
+This project is a merely portfolio one - so I do not intend on improving or updating it in any way (for now).
 
-## More details on the project
-- Parsing can be used for any competition - as long as it's from Kaggle official website
-  - currently **parsing available only for Firefox browser**
-  - parsing input arguments
-    - `competition url` - (example: https://www.kaggle.com/competitions/titanic)
-    - `sort_by` - (`public score` / `vote count` / `comment count`)
-    - `amount` - (didn't explicitly defined a limit - so be careful with the amount)
-    - `CSVs_SAVING_DIR` - (where to store the dataframe)
-  - parsed dataframe columns (CSV)
-      - example of dataframe (that will be stored after parsing)
-         notebook_name | notebook_url | public_score | private_score | medal | upvotes | views | run_time_info | last_updated | notebook_full_text | code_text | markdows_text | input_datasources | python_libraries
-         --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
-         Example 1 |  https://www.kaggle.com/code/example_1 | 0.88 | None | silver | 105 | 1352 | 13.1s - GPU T4 x2 | 2 months | ... | ... | ... | ['competition_dataset', 'open-math-mistral'] | [torch, transformers, pandas, tqdm, gc, re, ...]
-- **LLM notebooks summary using OLLAMA**
-  - requires OLLAMA application to be install - since `transformers` library and local using is very time costly
-  - summarization input parameters
-    - `model name` - you can use any model that's available with OLLAMA ([link to the models](https://ollama.com/library))
-    - `model temperature` - to regulate on how creative the LLM will be with it's answers (summaries) - the bigger, more creative [0.5 by default]
-- **Visual representation using GRAPHS** (networkx & pyvis)
-  - nodes - python libraries & competition notebooks
-  - edges - the edge between vertices exists, if the library was used in the code
+## Parsing (data)
+Any competition can be parsed - as long as it's from Kaggle official website & not a closed type (means everyone can participate).
+
+**IMPORTANT INFORMATION**:
+- **ONLY for Firefox** browser
+- parsing input arguments
+  - `competition url` - (example: https://www.kaggle.com/competitions/titanic)
+  - `sort_by` - 'public score', 'vote count', 'comment count' - these options only
+  - `amount` - no limit implemented (careful)
+  - `CSVs_SAVING_DIR` - path to store dataframe
+
+**EXAMPLE**:
+   notebook_name | notebook_url | public_score | private_score | medal | upvotes | views | run_time_info | last_updated | notebook_full_text | code_text | markdows_text | input_datasources | python_libraries
+   --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+   Example 1 |  https://www.kaggle.com/code/example_1 | 0.88 | None | silver | 105 | 1352 | 13.1s - GPU T4 x2 | 2 months | ... | ... | ... | ['competition_dataset', 'open-math-mistral'] | [torch, transformers, pandas, tqdm, gc, re, ...]
+      
+## **LLM notebooks summary**
+Uses OLLAMA desktop application & python library - in order to create a short summary of each code from the dataframe. The decision of using this approach is deeply correlated with the requirements and speed, when using LLMs locally with 'transformers' library.
+
+**INPUTS**:
+- `model name` - any model that's available to OLLAMA ([link to the models](https://ollama.com/library))
+- `model temperature` - regulation of "creativity" of the LLMs answers - the bigger, more creative [0.5 by default]
+
+**DEVELOPER'S NOTE**:
+- I'm not very good at prompt engineering - so you might consider improving the prompt and instructions as you like
+- This part was made purely for saving time - I wasn't trying to push the limits, nor do I have enough memory to try bigger LLM models (14B, 70B parameters)
+- If you have access to OpenAI ChatGPT key - I suggest you do that, since it's quite good in terms of following user's instructions.
+
+**!!!!!! - The following LLM output will be saved in dataframe and used in VISUALIZATION GRAPH section - !!!!!!**
+
+## **Visual graph representation** (networkx & pyvis)
+
+
+- nodes - python libraries & competition notebooks
+- edges - the edge between vertices exists, if the library was used in the code
+
+## Installation & Usage
+
  
 ## 📃 File Structure
 ```

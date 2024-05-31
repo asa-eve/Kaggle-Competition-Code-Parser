@@ -63,7 +63,7 @@ In order to build a graph, Louvain method (for community detection) was used. It
 - Visual representation was only required in order to better understand Python libraries (that is oftenly used in certain tasks & ML areas) - as well as selecting and highlighting notebooks as being 'interesting' for the user.
 
 <div align="center">
-<img align="center" src=figs/LLM summary.png width="100%"/>
+<img align="center" src="figs/LLM summary.png" width="100%"/>
 </div>
 
 ## Installation & Usage

@@ -57,7 +57,7 @@ In order to build a graph, Louvain method (for community detection) was used. It
 1. Clone repository `git clone https://github.com/asa-eve/Kaggle-Competition-Code-Parser.git`
 2. Create & activate virtual environment `python -m venv venv`
 3. Install dependencies `pip install -r requirements.txt`
-4. Write down your inputs in `config.json` (competition url, amount of notebooks, etc.)
+4. Provide INPUTS in `config.json` - (competition url, amount of notebooks, etc.)
 5. Run the code `python run src/main.py`
  
 ## 📃 File Structure

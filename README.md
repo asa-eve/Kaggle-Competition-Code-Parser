@@ -7,6 +7,11 @@ The purpose of this code is to make improving Machine Learning skills using Kagg
 
 This project is a merely portfolio one - so I do not intend on improving or updating it in any way (for now).
 
+
+<div align="center">
+<img align="center" src=figs/graph.png width="100%"/>
+</div>
+
 ## **Parsing (data)** - [Selenium, Requests, Nbformat]
 Any competition can be parsed - as long as it's from Kaggle official website & not a closed type (means everyone can participate).
 
@@ -32,14 +37,14 @@ Uses OLLAMA desktop application & python library - in order to create a short su
 - `model name` - any model that's available to OLLAMA ([link to the models](https://ollama.com/library))
 - `model temperature` - regulation of "creativity" of the LLMs answers - the bigger, more creative [0.5 by default]
 
-<div align="center">
-<img align="center" src=figs/ollama.png width="100%"/>
-</div>
-
 **DEVELOPER'S NOTE**:
 - I'm not very good at prompt engineering - so you might consider IMPROVING the prompt and instructions as you like
 - This part was made purely for saving time - I wasn't trying to push the limits, nor do I have enough memory to try bigger LLM models (14B, 70B parameters)
 - If you have access to OpenAI ChatGPT key - I suggest you do that, since it's quite good in terms of following user's instructions.
+
+<div align="center">
+<img align="center" src=figs/ollama.png width="100%"/>
+</div>
 
 ## **Visual graph representation** - [networkx & pyvis]
 In order to build a graph, Louvain method (for community detection) was used. It allows to better distinguish code without analyzing it through, but based on Python libraries only.
@@ -56,6 +61,10 @@ In order to build a graph, Louvain method (for community detection) was used. It
 
 **NOTE**:
 - Visual representation was only required in order to better understand Python libraries (that is oftenly used in certain tasks & ML areas) - as well as selecting and highlighting notebooks as being 'interesting' for the user.
+
+<div align="center">
+<img align="center" src=figs/LLM summary.png width="100%"/>
+</div>
 
 ## Installation & Usage
 1. Clone repository `git clone https://github.com/asa-eve/Kaggle-Competition-Code-Parser.git`

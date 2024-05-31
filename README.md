@@ -44,12 +44,23 @@ In order to build a graph, Louvain method (for community detection) was used. It
 - `NODES` - python libraries & competition notebooks
 - `EDGES` - the edge between vertices exists, if the library was used in the code
 - `WEIGHT`
+  - the value of `NODES` is the degree centrality (amount of edges that comes into the node)
+  - the value of `EDGES` between notebook node and python library - is the total number of times this python library was used among all notebooks in dataset
 
 **LLM SUMMARY**:
 - when pointing at the 'competition notebook' node - you will have a summary (generated on the previous step), so you can study it and decide, whether you want to spend your time on checking out certain notebooks (without looking in them)
 
-## Installation & Usage
+**NOTE**:
+- Visual representation was only required in order to better understand Python libraries (that is oftenly used in certain tasks & ML areas) - as well as selecting and highlighting notebooks as being 'interesting' for the user.
 
+## Installation & Usage
+- Pull repositry
+- Create virtual environment
+- Install packages using `pip install > requirements.txt`
+- Provide your inputs to `config.json`
+- Using cmd
+  - Provide the path to the repository
+  - run `python run src/main.py`
  
 ## 📃 File Structure
 ```

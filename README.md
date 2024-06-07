@@ -63,15 +63,19 @@ In order to build a graph, Louvain method (for community detection) was used. It
 - Visual representation was only required in order to better understand Python libraries (that is oftenly used in certain tasks & ML areas) - as well as selecting and highlighting notebooks as being 'interesting' for the user.
 
 <div align="center">
-<img align="center" src=figs/LLM summary.png width="100%"/>
+<img align="center" src="figs/LLM summary.png" width="100%"/>
 </div>
 
 ## Installation & Usage
-1. Clone repository `git clone https://github.com/asa-eve/Kaggle-Competition-Code-Parser.git`
-2. Create & activate virtual environment `python -m venv venv`
-3. Install dependencies `pip install -r requirements.txt`
+1. Clone repository
+    - `git clone https://github.com/asa-eve/Kaggle-Competition-Code-Parser.git`
+2. Create & activate virtual environment
+    - `python -m venv venv`
+3. Install dependencies
+    - `pip install -r requirements.txt`
 4. Provide INPUTS in `config.json` - (competition url, amount of notebooks, etc.)
-5. Run the code `python run src/main.py`
+5. Run the code
+    - `python run src/main.py`
  
 ## 📃 File Structure
 ```

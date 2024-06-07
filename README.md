@@ -75,7 +75,7 @@ In order to build a graph, Louvain method (for community detection) was used. It
     - `pip install -r requirements.txt`
 4. Provide INPUTS in `config.json` - (competition url, amount of notebooks, etc.)
 5. Run the code
-    - `python run src/main.py`
+    - `python src/main.py`
  
 ## 📃 File Structure
 ```

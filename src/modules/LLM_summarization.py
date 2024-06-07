@@ -15,7 +15,7 @@ def validate_response(response):
 def check_results(df):
     for _, row in df.iterrows():
         print("_____________________________________________")
-        print(f"Code {_}/{len(df)}")
+        print(f"Code {_+1}/{len(df)}")
         print("")
         print(df.iloc[_].LLM_summarized_code)
     for i in range(3): print("")
@@ -41,7 +41,7 @@ def LLM_summarization(path_to_dataframe, LLM_model_name='llama3', LLM_temperatur
 
         print(f"Summarizing {_+1}/{len(df)} code...")
 
-        prompt = f"""
+        instruction = f"""
         You are an AI assistant tasked with summarizing unique aspects of Machine Learning code written in Python.
         Your response must have: "Unique aspects", "Steps taken", "Summary".
         Strictly adhere to the provided instructions and format.
@@ -68,26 +68,9 @@ def LLM_summarization(path_to_dataframe, LLM_model_name='llama3', LLM_temperatur
 
             Summary:
             [Provide a brief summary highlighting the unique aspects of the code]
-
-
-        Example:
-
-            Unique aspects:
-            1. The use of MMOS-DeepSeekMath-7B, a zero-shot machine learning model for mathematical reasoning.
-            2. The integration of self-consistency and generated code reasoning evaluation to improve arithmetic hallucinations.
-
-            Steps taken:
-            1. Import necessary libraries, including PyTorch and transformers.
-            2. Load the pre-trained MMOS-DeepSeekMath-7B model and tokenizer.
-            3. Define a custom pipeline for text generation using the transformers library.
-            4. Process the output of the pipeline to extract code blocks and execute them to obtain results.
-            5. Integrate natural language reasoning with programs to solve mathematical problems.
-            6. Use self-consistency and generated code reasoning evaluation to improve arithmetic hallucinations.
-
-            Summary:
-            This code uses MMOS-DeepSeekMath-7B, a zero-shot machine learning model for mathematical reasoning, to integrate natural language reasoning with programs to solve mathematical problems. It also employs self-consistency and generated code reasoning evaluation to improve arithmetic hallucinations.
-
-        The following Machine Learning code for summarization:
+        """
+        
+        prompt = f"""The following Machine Learning code for summarization:
         {row.notebook_full_text}
         """
 
@@ -105,8 +88,14 @@ def LLM_summarization(path_to_dataframe, LLM_model_name='llama3', LLM_temperatur
 
         response = ollama.chat(model=LLM_model_name, messages=[
             {
+                "temperature": float(LLM_temperature),
+                'role': 'system',
+                'content': f'{instruction}',
+                'stream': False,
+            },
+            {
                 #"seed": 42,
-                "temperature": int(LLM_temperature),  # [0, 1]  (1 - extremly creative)
+                "temperature": float(LLM_temperature),  # [0, 1]  (1 - extremly creative)
                 'role': 'user',  # user / system
                 'content': f'{prompt}',
                 'stream': False,  # something related to output format

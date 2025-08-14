@@ -10,11 +10,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 
 
-def PARSING_COMPETITION_NOTEBOOKS(COMPETITION_URL, SORT_BY='public score', PYTHON_ONLY=True, excludeNonAccessedDatasources=True, NOTEBOOKS_AMOUNT = 5):
+def PARSING_COMPETITION_NOTEBOOKS(COMPETITION_URL, SORT_BY='public score', PYTHON_ONLY=True, excludeNonAccessedDatasources=True, NOTEBOOKS_AMOUNT = 5, config = {}):
     
     columns = ["notebook_name", "notebook_url", "public_score", "private_score", "medal", "upvotes", "views", "run_time_info", "last_updated", "notebook_full_text", "code_text", "markdowns_text", "input_datasources", "python_libraries"]
     df = pd.DataFrame(columns=columns)
@@ -64,8 +64,11 @@ def PARSING_COMPETITION_NOTEBOOKS(COMPETITION_URL, SORT_BY='public score', PYTHO
     # # Wait for some time to allow dynamic content to load (you can adjust the time accordingly)
     # time.sleep(2)
     
-
-    notebook_links = []
+    if config['MY NOTEBOOKS']:
+        notebook_lins = config['CUSTOM NOTEBOOKS LIST']
+    else:
+        notebook_links = []
+        
     url_count = 0
     MAX_NOTEBOOKS = NOTEBOOKS_AMOUNT
     
@@ -100,57 +103,91 @@ def PARSING_COMPETITION_NOTEBOOKS(COMPETITION_URL, SORT_BY='public score', PYTHO
         # time.sleep(2)
 
         # NOTEBOOK NAME
-        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//*[span[contains(text(), 'Python')]]")))
-        text = driver.find_element(By.XPATH, "//*[span[contains(text(), 'Python')]]").text     # getting element above the element via *[]
-        index = text.find('\n')
-        notebook_name = text[:index]
+        if config['NAME']:
+            try:
+                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//div[@wrap='hide']//h1")))
+                notebook_name = driver.find_element(By.XPATH, "//div[@wrap='hide']//h1").text
+            except NoSuchElementException:
+                notebook_name = 'None'
+        else:
+            notebook_name = 'None'
 
         # UPDATE LAST TIME
-        update_date = driver.find_element(By.XPATH, "//span[contains(@aria-label, 'ago')]").get_attribute('aria-label')[:-4]
-        if update_date == 'a day': update_date = '1 day'
-        if update_date == 'a month': update_date = '1 month'
-        if update_date == 'a year': update_date = '1 year'
+        if config['UPDATE DATE']:
+            try:
+                update_date = driver.find_element(By.XPATH, "//span[contains(@aria-label, 'ago')]").get_attribute('aria-label')[:-4]
+                if update_date == 'a day': update_date = '1 day'
+                if update_date == 'a month': update_date = '1 month'
+                if update_date == 'a year': update_date = '1 year'
+            except NoSuchElementException:
+                update_date = 'None'
+        else:
+            update_date = 'None'
 
         # UPVOTES
-        upvotes_amount = int(driver.find_element(By.XPATH, ".//button[contains(@aria-label, 'votes')]").text)
+        if config['UPVOTES']:
+            try:
+                upvotes_amount = int(driver.find_element(By.XPATH, ".//button[contains(@aria-label, 'votes')]").text)
+            except NoSuchElementException:
+                upvotes_amount = 'None'
+        else:
+            upvotes_amount = 'None'
 
         # MEDAL
-        try:
-            medal = driver.find_element(By.XPATH, "//img[contains(@src, '/static/images/medals/notebooks/') and contains(@src, '.png')]").get_attribute('alt')[:-6]
-        except NoSuchElementException:
+        if config['MEDAL']:
+            try:
+                medal = driver.find_element(By.XPATH, "//img[contains(@src, '/static/images/medals/notebooks/') and contains(@src, '.png')]").get_attribute('alt')[:-6]
+            except NoSuchElementException:
+                medal = 'None'
+        else:
             medal = 'None'
 
         # PUBLIC SCORE
-        try:
-            element = driver.find_element(By.XPATH, f"//*[text()='Public Score']") 
-            parent = element.find_element(By.XPATH, "..")
-            public_score = float(parent.find_element(By.TAG_NAME, "p").text)
-        except NoSuchElementException:
+        if config['PUBLIC SCORE']:
+            try:
+                element = driver.find_element(By.XPATH, f"//*[text()='Public Score']") 
+                parent = element.find_element(By.XPATH, "..")
+                public_score = float(parent.find_element(By.TAG_NAME, "p").text)
+            except NoSuchElementException:
+                public_score = 'None'
+        else:
             public_score = 'None'
 
         # PRIVATE SCORE
-        try:
-            element = driver.find_element(By.XPATH, f"//*[text()='Private Score']") 
-            parent = element.find_element(By.XPATH, "..")
-            private_score = float(parent.find_element(By.TAG_NAME, "p").text)
-        except NoSuchElementException:
+        if config['PRIVATE SCORE']:
+            try:
+                element = driver.find_element(By.XPATH, f"//*[text()='Private Score']") 
+                parent = element.find_element(By.XPATH, "..")
+                private_score = float(parent.find_element(By.TAG_NAME, "p").text)
+            except NoSuchElementException:
+                private_score = 'None'
+        else:
             private_score = 'None'
 
         # RUN TIME
-        try:
-            element = driver.find_element(By.XPATH, f"//*[text()='Run']") 
-            parent = element.find_element(By.XPATH, "..")
-            run_time_info = parent.find_element(By.TAG_NAME, "p").text
-        except NoSuchElementException:
+        if config['RUN TIME']:
+            try:
+                element = driver.find_element(By.XPATH, f"//*[text()='Run']") 
+                parent = element.find_element(By.XPATH, "..")
+                run_time_info = parent.find_element(By.TAG_NAME, "p").text
+            except NoSuchElementException:
+                run_time_info = 'None'
+        else:
             run_time_info = 'None'
 
         # VIEWS
-        text = driver.find_element(By.XPATH, f"//*[text()='views']").text
-        views_amount = int(re.search(r'\b(\d+\s*)+ VIEWS$', text).group(0).replace(' VIEWS', '').replace(' ', ''))
+        if config['VIEWS']:
+            try:
+                text = driver.find_element(By.XPATH, f"//*[text()='views']").text
+                views_amount = int(re.search(r'\b(\d+\s*)+ VIEWS$', text).group(0).replace(' VIEWS', '').replace(' ', ''))
+            except NoSuchElementException:
+                views_amount = 'None'
+        else:
+            views_amount = 'None'
     
         # -------------------------------------------------------------------------------------------------------------------------------------------------------
         
-        time.sleep(0.5)
+        time.sleep(1.5)
         
         # click ':'
         inner_html_content = "more_vert"
@@ -183,15 +220,23 @@ def PARSING_COMPETITION_NOTEBOOKS(COMPETITION_URL, SORT_BY='public score', PYTHO
         driver.get(url)
         # # Wait for some time to allow dynamic content to load (you can adjust the time accordingly)
         # time.sleep(2)
-        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//p[text()='Data Sources']")))
 
-        # Find all list items within the object list [using 'child element' Data Sources -> to find parent element -> that containts list of objects that we need [ul class list, li class element]]
-        list_of_elements = driver.find_element(By.XPATH, f"//p[text()='Data Sources']")
-        parent_element = list_of_elements.find_element(By.XPATH, "../..")
-        ul_element = parent_element.find_element(By.TAG_NAME, "ul")
-        list_of_elements = ul_element.find_elements(By.TAG_NAME, "li") 
-        for el in list_of_elements:
-            input_datasources.append(el.text[12:])
+        if config['DATA SOURCES']:
+            try:
+                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//p[text()='Data Sources']")))
+
+                # Find all list items within the object list [using 'child element' Data Sources -> to find parent element -> that containts list of objects that we need [ul class list, li class element]]
+                list_of_elements = driver.find_element(By.XPATH, f"//p[text()='Data Sources']")
+                parent_element = list_of_elements.find_element(By.XPATH, "../..")
+                ul_element = parent_element.find_element(By.TAG_NAME, "ul")
+                list_of_elements = ul_element.find_elements(By.TAG_NAME, "li") 
+                for el in list_of_elements:
+                    input_datasources.append(el.text[12:])
+
+            except TimeoutException:
+                input_datasources.append('None')
+        else:
+            input_datasources.append('None')
         
         # -------------------------------------------------------------------------------------------------------------------------------------------------------
         
@@ -209,23 +254,26 @@ def PARSING_COMPETITION_NOTEBOOKS(COMPETITION_URL, SORT_BY='public score', PYTHO
         all_text = ""
         code_text = ""
         markdown_text = ""
-        for cell in notebook.cells:
-            if cell.cell_type == 'code':
-                # Include code cell content
-                all_text += cell.source + '\n'
-                code_text += cell.source + '\n'
-            elif cell.cell_type == 'markdown':
-                # Include markdown cell content
-                all_text += cell.source + '\n'
-                markdown_text += cell.source + '\n'
+
+        if config['NOTEBOOK CELLS']:
+            for cell in notebook.cells:
+                if cell.cell_type == 'code':
+                    # Include code cell content
+                    all_text += cell.source + '\n'
+                    code_text += cell.source + '\n'
+                elif cell.cell_type == 'markdown':
+                    # Include markdown cell content
+                    all_text += cell.source + '\n'
+                    markdown_text += cell.source + '\n'
         
         # Forming list of Python libraries
-        lines_of_code = list(filter(bool, code_text.split('\n')))
         python_libraries = []
-        for line in lines_of_code:
-            if line.startswith('import') or line.startswith('from'):
-                python_libraries.append(line.split(' ')[1])
-        python_libraries = list(OrderedDict.fromkeys(python_libraries))
+        if config['PYTHON LIBRARIES']:
+            lines_of_code = list(filter(bool, code_text.split('\n')))
+            for line in lines_of_code:
+                if line.startswith('import') or line.startswith('from'):
+                    python_libraries.append(line.split(' ')[1])
+            python_libraries = list(OrderedDict.fromkeys(python_libraries))
         
         # -------------------------------------------------------------------------------------------------------------------------------------------------------
         

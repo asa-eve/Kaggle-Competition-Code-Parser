@@ -77,6 +77,47 @@ if __name__ == "__main__":
     parser.add_argument('amount', type=int, help='The amount of code to parse.')
     parser.add_argument('saving_dir', type=str, help='The directory to save the resulting data frame.')
     parser.add_argument('no_sublibraries', type=bool, help='Whether NOT to include sublibraries in the total libraries list or not. (0/1 - No/Yes)')
-
+    parser.add_argument('--custom_notebooks', type=str, default='', help='Optional path to a file containing custom notebook URLs.')
     args = parser.parse_args()
-    Code_parsing(args.url, args.sort_by, args.amount, args.saving_dir, args.no_sublibraries)
+
+    config = {
+    'NAME': True,
+    'UPDATE DATE': True,
+    'UPVOTES': True,
+    'MEDAL': False,
+    'PUBLIC SCORE': False,
+    'PRIVATE SCORE': False,
+    'RUN TIME': False,
+    'VIEWS': False, 
+
+    'NOTEBOOKS TO PARSE': args.amount,
+    'DATA SOURCES': False,
+    'NOTEBOOK CELLS': True,
+    'PYTHON LIBRARIES': not args.no_sublibraries,   
+    }
+
+
+    # Check if custom notebook list is provided
+    if args.custom_notebooks:
+        with open(args.custom_notebooks, 'r', encoding='utf-8') as f:
+            my_list = [line.strip() for line in f if line.strip()]
+        
+        config['MY NOTEBOOKS'] = True
+        config['CUSTOM NOTEBOOKS LIST'] = my_list
+        amount = len(my_list)
+    else:
+        config['MY NOTEBOOKS'] = False
+        config['CUSTOM NOTEBOOKS LIST'] = []
+        amount = args.amount
+
+    # Run the parser
+    Code_parsing(args.url, args.sort_by, amount, args.saving_dir, args.no_sublibraries, config)
+
+
+# python your_script.py \
+# "https://www.kaggle.com/competitions/nyc-taxi-trip-duration" \
+# "vote count" \
+# 5 \
+# "_DOWNLOADED NOTEBOOKS/" \
+# 0 \
+# --custom_notebooks "my_notebooks.txt"
